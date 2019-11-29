@@ -1,12 +1,14 @@
 import React, {Component} from "react"
 
-class apiCall extends Component {
+
+class ApiCall extends Component {
     constructor(props) {
         super(props);
         this.state = {
           error: null,
           isLoaded: false,
-          items: []
+          items: [],
+          lastPrice: []
         };
       }
     
@@ -17,8 +19,9 @@ class apiCall extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                items: result.result.XXBTZUSD.a[0]
-              });
+                items: result.result.XXBTZUSD.a[0],
+                lastPrice: localStorage.getItem("last")
+              });              
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -34,11 +37,15 @@ class apiCall extends Component {
           
           
           render() {
-            let { error, isLoaded, items } = this.state;
-            console.log("New price ", items)
-            let newLast = localStorage.getItem("newLast", items)
-            localStorage.setItem("last", newLast )
-            localStorage.setItem("newLast", items)
+            let { error, isLoaded, items, lastPrice  } = this.state;
+            let last = localStorage.getItem("newLast")                              
+            console.log("last price (state)", lastPrice)
+            console.log("items", items)
+            console.log("test", lastPrice - items)
+            const difference = items - lastPrice 
+            localStorage.setItem("last", last )         
+            localStorage.setItem("newLast", items)    
+           
             if (error) {
               return <div>Error: {error.message}</div>;
             } else if (!isLoaded) {
@@ -46,13 +53,18 @@ class apiCall extends Component {
             } else {
               return (
                 <>
-                  <h2> Hi! Bitcoin is currently worth ${parseFloat(items).toFixed(2)}</h2>
-                 
-                
+                  <div className="difference-container">
+                    <div className="difference">
+                    <h2> Bitcoin's Price has changed by ${parseFloat(difference).toFixed(2)}</h2>
+                    </div>
+                    
+                    </div>
+                  <h2 id="bitcoinPrice">Current Price: ${parseFloat(items).toFixed(2)}</h2>
+                  
                 </>
               );
             }
           }
 }
 
-export default apiCall
+export default ApiCall
