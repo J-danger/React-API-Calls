@@ -17,7 +17,7 @@ class apiCall extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                items: result.result.XXBTZUSD.o
+                items: result.result.XXBTZUSD.a[0]
               });
             },
             // Note: it's important to handle errors here
@@ -31,13 +31,10 @@ class apiCall extends Component {
             }
             )
           }
-          
+
           
       render() {
-        const { error, isLoaded, items } = this.state;
-          localStorage.setItem("last", items)
-          console.log("this one ", localStorage.setItem("last", items))
-            
+        let { error, isLoaded, items } = this.state;
             if (error) {
               return <div>Error: {error.message}</div>;
             } else if (!isLoaded) {
@@ -46,7 +43,7 @@ class apiCall extends Component {
               return (
                 <>
                   <h2> Hi! Bitcoin is currently worth ${items}</h2>
-                  <h2>Last time you checked, it was ${localStorage.getItem("last", items)} </h2>
+                 
                 
                 </>
               );

@@ -1,5 +1,7 @@
 import React from 'react';
 import ApiCall from "./components/ApiCall.js"
+import ApiCatch from "./components/ApiCatch.js"
+import Update from "./components/Update.js"
 import './App.css';
 
 function App() {
@@ -7,6 +9,8 @@ function App() {
     <div className="App">
       <div className="Container">
       <ApiCall />
+      <ApiCatch />
+      <Update />
       </div>
     </div>
   );
