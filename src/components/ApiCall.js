@@ -19,7 +19,7 @@ class ApiCall extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                items: result.result.XXBTZUSD.o,
+                items: result.result.XXBTZUSD.c[0],
                 lastPrice: localStorage.getItem("last")
               });              
             },
