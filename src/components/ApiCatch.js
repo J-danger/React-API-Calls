@@ -15,9 +15,9 @@ class apiCatch extends Component {
           console.log("Last Price", localStorage.getItem("last", last))
           return(
             <>
-            <h2>
-            Last time you checked, it was ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} 
-            </h2>
+              <h2>
+                Last time you checked, it was ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} 
+              </h2>
             </>
           
           )
