@@ -29,26 +29,29 @@ class apiCall extends Component {
                 error
               });
             }
-          )
-      }
-    
-      render() {
+            )
+          }
           
+          
+      render() {
         const { error, isLoaded, items } = this.state;
-        console.log(items)
-        if (error) {
-          return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-          return <div>Loading...</div>;
-        } else {
-          return (
-            <ul>
-                Hi! Bitcoin is currently worth ${items}
-             
-            </ul>
-          );
-        }
-      }
+          localStorage.setItem("last", items)
+          console.log("this one ", localStorage.setItem("last", items))
+            
+            if (error) {
+              return <div>Error: {error.message}</div>;
+            } else if (!isLoaded) {
+              return <div>Loading...</div>;
+            } else {
+              return (
+                <>
+                  <h2> Hi! Bitcoin is currently worth ${items}</h2>
+                  <h2>Last time you checked, it was ${localStorage.getItem("last", items)} </h2>
+                
+                </>
+              );
+            }
+          }
 }
 
 export default apiCall
