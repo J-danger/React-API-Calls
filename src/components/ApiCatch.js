@@ -24,7 +24,7 @@ class ApiCatch extends Component {
           return(
             <>
               <h2 id="lastCheck">
-                It was worth ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} last time you checked.
+                It was worth ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} last time you checked
               </h2>
             </>
           
