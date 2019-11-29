@@ -29,13 +29,13 @@ class apiCall extends Component {
                 error
               });
             }
-            )
-            
+            )            
           }
           
           
           render() {
             let { error, isLoaded, items } = this.state;
+            console.log("New price ", items)
             let newLast = localStorage.getItem("newLast", items)
             localStorage.setItem("last", newLast )
             localStorage.setItem("newLast", items)
@@ -46,7 +46,7 @@ class apiCall extends Component {
             } else {
               return (
                 <>
-                  <h2> Hi! Bitcoin is currently worth ${items}</h2>
+                  <h2> Hi! Bitcoin is currently worth ${parseFloat(items).toFixed(2)}</h2>
                  
                 
                 </>

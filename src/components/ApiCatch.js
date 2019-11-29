@@ -12,10 +12,12 @@ class apiCatch extends Component {
     
       render() {
           let { last } = this.state;
-          console.log("this one", localStorage.getItem("last", last))
+          console.log("Last Price", localStorage.getItem("last", last))
           return(
             <>
-                <h2>Last time you checked, it was ${localStorage.getItem("last", last)} </h2>
+            <h2>
+            Last time you checked, it was ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} 
+            </h2>
             </>
           
           )
