@@ -7,9 +7,10 @@ function App() {
   return (
     <div className="App">
       <div className="Container">
-      <ApiCall />
-      <ApiCatch />
-      
+        <div className="Text">
+        <ApiCall />
+        <ApiCatch />
+        </div>  
       </div>
     </div>
   );

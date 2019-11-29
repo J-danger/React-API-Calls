@@ -6,9 +6,13 @@
   display: block;
 }
 
-.Container {
-  
+.Container {  
   display: inline-block;
+  font-family: monospace;
+}
+
+.Text {
+margin-top: 50%;
 }
 
 .App-logo {
