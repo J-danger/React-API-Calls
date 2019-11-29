@@ -30,11 +30,15 @@ class apiCall extends Component {
               });
             }
             )
+            
           }
-
           
-      render() {
-        let { error, isLoaded, items } = this.state;
+          
+          render() {
+            let { error, isLoaded, items } = this.state;
+            let newLast = localStorage.getItem("newLast", items)
+            localStorage.setItem("last", newLast )
+            localStorage.setItem("newLast", items)
             if (error) {
               return <div>Error: {error.message}</div>;
             } else if (!isLoaded) {
