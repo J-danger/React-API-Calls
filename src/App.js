@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ApiCall from "./components/ApiCall.js"
 import ApiCatch from "./components/ApiCatch.js"
 
 import './App.css';
 
-function App() {
+class App extends Component {
+  
+  render(){
+    if (localStorage.getItem("Last")){
+      return(
+      <>test</>
+      )
+    } else {
   return (
     <div className="App">
       <div className="Container">
@@ -15,6 +22,7 @@ function App() {
       </div>
     </div>
   );
+}}
 }
 
 export default App;

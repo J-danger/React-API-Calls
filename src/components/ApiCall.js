@@ -7,10 +7,12 @@ class ApiCall extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          items: [],
-          lastPrice: []
+          current: [],
+          lastPrice: [],
+         
         };
       }
+     
     
       componentDidMount() {
         fetch("https://api.kraken.com/0/public/Ticker?pair=XBTUSD")
@@ -19,13 +21,10 @@ class ApiCall extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                items: result.result.XXBTZUSD.a[0],
-                lastPrice: localStorage.getItem("last")
+                current: result.result.XXBTZUSD.a[0],
+                lastPrice: localStorage.getItem("last"),                
               });              
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },        
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -35,19 +34,22 @@ class ApiCall extends Component {
             )            
           }
           
-          
+      
           render() {
-            let { error, isLoaded, items, lastPrice  } = this.state;
+            let { error, isLoaded, current, lastPrice  } = this.state;
             let last = localStorage.getItem("newLast")  
-            const difference = items - lastPrice 
+            const difference = current - lastPrice 
             localStorage.setItem("last", last )         
-            localStorage.setItem("newLast", items)    
+            localStorage.setItem("newLast", current)    
            
             if (error) {
               return <div>Error: {error.message}</div>;
             } else if (!isLoaded) {
               return <div>Loading...</div>;
-            } else {
+            } else if (lastPrice === "null"){
+              return <>Please refresh the page if this is your first time visiting.</>
+            }            
+            else {
               return (
                 <>
                   <div className="difference-container">
@@ -55,8 +57,8 @@ class ApiCall extends Component {
                       <h2> Bitcoin's Price has changed by ${parseFloat(difference).toFixed(2)}</h2>
                     </div>
                   </div>
-                  <h2 id="bitcoinPrice">Current Price: ${parseFloat(items).toFixed(2)}</h2>
-                  
+                                
+                  <h2 id="bitcoinPrice">Current Price: ${parseFloat(current).toFixed(2)}</h2>   
                 </>
               );
             }
