@@ -23,6 +23,12 @@ margin-top: 50%;
   /* color: rgba(247,147, 26); */
 }
 
+#reload {
+  font-size: 25px;  
+ margin-top: -25%;
+ 
+}
+
 .difference-container{
   display: block;
 }

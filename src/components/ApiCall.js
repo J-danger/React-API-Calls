@@ -38,7 +38,7 @@ class ApiCall extends Component {
           render() {
             let { error, isLoaded, current, lastPrice  } = this.state;
             let last = localStorage.getItem("newLast")  
-            const difference = current - lastPrice 
+            let difference = (((current - lastPrice) / lastPrice) * 100)
             localStorage.setItem("last", last )         
             localStorage.setItem("newLast", current)    
            
@@ -47,14 +47,14 @@ class ApiCall extends Component {
             } else if (!isLoaded) {
               return <div>Loading...</div>;
             } else if (lastPrice === "null"){
-              return <>Please refresh the page if this is your first time visiting.</>
+              return <div id="reload">Please refresh the page if this is your first time visiting.</div>
             }            
             else {
               return (
                 <>
                   <div className="difference-container">
                     <div className="difference">
-                      <h2> Bitcoin's Price has changed by ${parseFloat(difference).toFixed(2)}</h2>
+                      <h2> Bitcoin's Price has changed by {parseFloat(difference).toFixed(2)}%</h2>
                     </div>
                   </div>
                                 
