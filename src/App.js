@@ -14,11 +14,10 @@ class App extends Component {
     } else {
   return (
     <div className="App">
-      <div className="Container">
-        <div className="Text">
+      <div className="Container">  
         <ApiCall />
         <ApiCatch />
-        </div>  
+        
       </div>
     </div>
   );

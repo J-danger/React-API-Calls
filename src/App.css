@@ -1,59 +1,14 @@
+Body {
+  background: black;
+  color: white;
+}
+
 .App {
-  text-align: center;
-  height: 100vh;
-  background-color: black;
-  color: white;
-  display: block;
+ text-align: center;
 }
 
-.Container {  
-  display: inline-block;
-  font-family: monospace;
-}
-
-.Text {
-margin-top: 50%;
-}
-
-#lastCheck  {
-  /* color: rgba(247,147, 26); */
-}
-
-#bitcoinPrice  {
-  /* color: rgba(247,147, 26); */
-}
-
-#reload {
-  font-size: 25px;  
- margin-top: -25%;
- 
-}
-
-.difference-container{
-  display: block;
-}
-.difference {  
+.Container {
+  margin-top: 10%;
   
-  margin-top: 20px;
-  text-align: center;
-  vertical-align: middle;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
