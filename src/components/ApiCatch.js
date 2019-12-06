@@ -17,14 +17,12 @@ class ApiCatch extends Component {
                 isLoaded: true,               
                 last: localStorage.getItem("last"),                
               });  
-              
-            
-              // console.log(lastTime)
+           
           }
     
       render() {
         
-          let { last, error, isLoaded, lastTime } = this.state;  
+          let { last, error, isLoaded } = this.state;  
           
           if (error) {
             return <div>Error: {error.message}</div>;
@@ -38,7 +36,7 @@ class ApiCatch extends Component {
             <>    
             
               <h2 id="lastCheck">
-                It was worth ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} last time you checked on {lastTime}
+                It was worth ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} last time you checked
               </h2>
             </>
           

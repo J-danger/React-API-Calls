@@ -7,13 +7,13 @@ class Clock extends Component {
         this.state = { 
             time: new Date() 
         
-        }; // initialise the state
+        }; 
     }
 
-    componentDidMount() { // create the interval once component is mounted
+    componentDidMount() { 
         this.update = setInterval(() => {
             this.setState({ time: new Date() });
-        }, 1 * 1000); // every 1 seconds
+        }, 1 * 1000); 
         let { time } = this.state;
         localStorage.setItem("lastTime", time.toLocaleDateString()) 
     }
