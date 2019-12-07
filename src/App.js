@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ApiCall from "./components/ApiCall.js"
 import ApiCatch from "./components/ApiCatch.js"
-
+import Chart from "./components/Chart.js"
 import './App.css';
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
       <div className="Container">  
         <ApiCall />
         <ApiCatch />
-        
+        <Chart />
       </div>
     </div>
   );

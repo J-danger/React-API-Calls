@@ -7,7 +7,7 @@ class ApiCatch extends Component {
         this.state = {
          error: null,
          isLoaded: false,
-         last: [],
+         lastPrice: [],
          lastTime: localStorage.getItem("lastTime")
         };
       }
@@ -15,20 +15,19 @@ class ApiCatch extends Component {
       componentDidMount() {        
               this.setState({
                 isLoaded: true,               
-                last: localStorage.getItem("last"),                
+                lastPrice: localStorage.getItem("last"),                
               });  
            
           }
     
       render() {
         
-          let { last, error, isLoaded } = this.state;  
-          
+          let { lastPrice, error, isLoaded } = this.state;          
           if (error) {
             return <div>Error: {error.message}</div>;
           } else if (!isLoaded) {
             return <div></div>;
-          } else if (last === "null"){
+          } else if (lastPrice === "null"){
             return <></>
           }           
           else {
@@ -36,7 +35,7 @@ class ApiCatch extends Component {
             <>    
             
               <h2 id="lastCheck">
-                It was worth ${parseFloat(localStorage.getItem("last", last)).toFixed(2)} last time you checked
+                It was worth ${parseFloat(localStorage.getItem("last", lastPrice)).toFixed(2)} last time you checked
               </h2>
             </>
           

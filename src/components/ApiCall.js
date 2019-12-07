@@ -11,8 +11,7 @@ class ApiCall extends Component {
           lastPrice: [],
          
         };
-      }
-     
+      }     
     
       componentDidMount() {
         fetch("https://api.kraken.com/0/public/Ticker?pair=XBTUSD")
