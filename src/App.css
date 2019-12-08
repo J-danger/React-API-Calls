@@ -18,3 +18,13 @@ li {
   list-style: none;
 }
 
+.table {
+  text-align: center;
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.price-text {
+  border: 1px solid white;
+  padding: 5px;
+}

@@ -174,64 +174,64 @@ class Chart extends Component {
           return <div>Loading...</div>;
         } else {
           return (            
-       <table class="table">
+       <table className="table">
         <thead>
         <tr>
-            <th class="price-text" scope="col">Coin/Token</th>
-            <th class="price-text" scope="col">Price</th>
-            <th class="price-text" scope="col">24h High</th>
-            <th class="price-text" scope="col">24h Low</th>
-            <th class="price-text" scope="col">24h Volume</th>
-            <th class="price-text" scope="col">Month Average</th>
-            <th class="price-text" scope="col">Month Difference</th>
+            <th className="price-text" scope="col">Coin/Token</th>
+            <th className="price-text" scope="col">Price</th>
+            <th className="price-text" scope="col">24h High</th>
+            <th className="price-text" scope="col">24h Low</th>
+            <th className="price-text" scope="col">24h Volume</th>
+            <th className="price-text" scope="col">Month Average</th>
+            <th className="price-text" scope="col">Month Difference</th>
             
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th class="price-text" scope="row">BTC</th>
-            <td class="price-text" >${priceBTC}</td>
-            <td class="price-text" >${highBTC}</td>
-            <td class="price-text" >${lowBTC}</td>
-            <td class="price-text" >${volBTC}</td>
-            <td class="price-text" >${avgMonthBTC}</td>
-            <td class="price-text" >{monthPercentBTC}%</td>           
+            <th className="price-text" scope="row">BTC</th>
+            <td className="price-text" >${priceBTC}</td>
+            <td className="price-text" >${highBTC}</td>
+            <td className="price-text" >${lowBTC}</td>
+            <td className="price-text" >${volBTC}</td>
+            <td className="price-text" >${avgMonthBTC}</td>
+            <td className="price-text" >{monthPercentBTC}%</td>           
         </tr>
         <tr>
-            <th class="price-text" scope="row">ETH</th>
-            <td class="price-text" >${priceETH}</td>
-            <td class="price-text" >${highETH}</td>
-            <td class="price-text" >${lowETH}</td>
-            <td class="price-text" >${volETH}</td>
-            <td class="price-text" >${avgMonthETH}</td>
-            <td class="price-text" >{monthPercentETH}%</td>           
+            <th className="price-text" scope="row">ETH</th>
+            <td className="price-text" >${priceETH}</td>
+            <td className="price-text" >${highETH}</td>
+            <td className="price-text" >${lowETH}</td>
+            <td className="price-text" >${volETH}</td>
+            <td className="price-text" >${avgMonthETH}</td>
+            <td className="price-text" >{monthPercentETH}%</td>           
         </tr>
         <tr>
-            <th class="price-text" scope="row">XMR</th>
-            <td class="price-text" >${priceXMR}</td>
-            <td class="price-text" >${highXMR}</td>
-            <td class="price-text" >${lowXMR}</td>
-            <td class="price-text" >${volXMR}</td>
-            <td class="price-text" >${avgMonthXMR}</td>
-            <td class="price-text" >{monthPercentXMR}%</td>           
+            <th className="price-text" scope="row">XMR</th>
+            <td className="price-text" >${priceXMR}</td>
+            <td className="price-text" >${highXMR}</td>
+            <td className="price-text" >${lowXMR}</td>
+            <td className="price-text" >${volXMR}</td>
+            <td className="price-text" >${avgMonthXMR}</td>
+            <td className="price-text" >{monthPercentXMR}%</td>           
         </tr>
         <tr>
-            <th class="price-text" scope="row">BCH</th>
-            <td class="price-text" >${priceBCH}</td>
-            <td class="price-text" >${highBCH}</td>
-            <td class="price-text" >${lowBCH}</td>
-            <td class="price-text" >${volBCH}</td>
-            <td class="price-text" >${avgMonthBCH}</td>
-            <td class="price-text" >{monthPercentBCH}%</td>           
+            <th className="price-text" scope="row">BCH</th>
+            <td className="price-text" >${priceBCH}</td>
+            <td className="price-text" >${highBCH}</td>
+            <td className="price-text" >${lowBCH}</td>
+            <td className="price-text" >${volBCH}</td>
+            <td className="price-text" >${avgMonthBCH}</td>
+            <td className="price-text" >{monthPercentBCH}%</td>           
         </tr>
         <tr>
-            <th class="price-text" scope="row">ZEC</th>
-            <td class="price-text" >${priceZEC}</td>
-            <td class="price-text" >${highZEC}</td>
-            <td class="price-text" >${lowZEC}</td>
-            <td class="price-text" >${volZEC}</td>
-            <td class="price-text" >${avgMonthZEC}</td>
-            <td class="price-text" >{monthPercentZEC}%</td>           
+            <th className="price-text" scope="row">ZEC</th>
+            <td className="price-text" >${priceZEC}</td>
+            <td className="price-text" >${highZEC}</td>
+            <td className="price-text" >${lowZEC}</td>
+            <td className="price-text" >${volZEC}</td>
+            <td className="price-text" >${avgMonthZEC}</td>
+            <td className="price-text" >{monthPercentZEC}%</td>           
         </tr>
 
 
