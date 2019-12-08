@@ -173,8 +173,9 @@ class Chart extends Component {
         } else if (!isLoaded) {
           return <div>Loading...</div>;
         } else {
-          return (            
-       <table className="table">
+          return (   
+        <div className="table-container">         
+        <table className="table">
         <thead>
         <tr>
             <th className="price-text" scope="col">Coin/Token</th>
@@ -233,12 +234,9 @@ class Chart extends Component {
             <td className="price-text" >${avgMonthZEC}</td>
             <td className="price-text" >{monthPercentZEC}%</td>           
         </tr>
-
-
-
-        
-            </tbody>
+        </tbody>
         </table>
+        </div>
           );
         }
       }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ApiCall from "./components/ApiCall.js"
-import ApiCatch from "./components/ApiCatch.js"
 import Chart from "./components/Chart.js"
 import './App.css';
 
@@ -15,8 +14,7 @@ class App extends Component {
   return (
     <div className="App">
       <div className="Container">  
-        <ApiCall />
-        <ApiCatch />
+        <ApiCall />       
         <Chart />
       </div>
     </div>

@@ -1,6 +1,7 @@
-# This is a simple API call in React
+# Cryptocurrency price tracking app
 
-On page load, the historic price saved within local storage is displayed and stored in a state before the local data is overwritten by the newest API call price. This preps the data for the next session, and continuously overwrites the data reducing the impact on the users' local storage. 
-
+This app uses localstorage and React states in order to display the price of Bitcoin the last time the user visited the app. Additionally, there is a chart with price and market information for BTC, ETH, XMR, BCH and ZEC which are averages across 31 exchanges. 
 
 Deployed: https://btclast.herokuapp.com/
+
+Future development: Allow the user to locally store price information for all 5 pre-tracked currencies. In addition to allowing the user to select their own cryptocurrencies to track. 

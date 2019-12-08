@@ -14,13 +14,13 @@ class ApiCall extends Component {
       }     
     
       componentDidMount() {
-        fetch("https://api.kraken.com/0/public/Ticker?pair=XBTUSD")
+        fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD")
           .then(res => res.json())
           .then(
             (result) => {
               this.setState({
                 isLoaded: true,
-                current: result.result.XXBTZUSD.a[0],
+                current: result.last.toFixed(2),
                 lastPrice: localStorage.getItem("last"),                
               });              
             },        
@@ -31,15 +31,14 @@ class ApiCall extends Component {
               });
             }
             )            
-          }
-          
+          }          
       
           render() {
             let { error, isLoaded, current, lastPrice  } = this.state;
-            let last = localStorage.getItem("newLast")  
+            let last = localStorage.getItem("currentPrice")  
             let difference = (((current - lastPrice) / lastPrice) * 100)
             localStorage.setItem("last", last )         
-            localStorage.setItem("newLast", current)    
+            localStorage.setItem("currentPrice", current)    
            
             if (error) {
               return <div>Error: {error.message}</div>;
@@ -55,9 +54,9 @@ class ApiCall extends Component {
                     <div className="difference">
                       <h2> Bitcoin's Price has changed by {parseFloat(difference).toFixed(2)}%</h2>
                     </div>
-                  </div>
-                                
-                  <h2 id="bitcoinPrice">Current Price: ${parseFloat(current).toFixed(2)}</h2>   
+                  </div>                                
+                  <h2 id="bitcoinPrice">Current Price: ${parseFloat(current).toFixed(2)}</h2> 
+                  <h2>It was worth ${this.state.lastPrice} last time you checked </h2>  
                 </>
               );
             }

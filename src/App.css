@@ -1,16 +1,19 @@
 Body {
-  background: black;
-  color: white;
-  font-family: 'Fjalla One', sans-serif;
+  background: #f8f8ff;
+  background-size: cover;
+  color: rgb(0, 0, 0);
+  
   font-family: 'Nanum Gothic', sans-serif;
+  margin-top: 5%;
 }
 
 .App {
  text-align: center;
+ 
 }
 
-.Container {
-  margin-top: 30%;
+.Container {  
+  margin-top: 10%;
   
 }
 
@@ -20,11 +23,19 @@ li {
 
 .table {
   text-align: center;
-  display: inline-block;
-  margin-top: 5%;
+  display: inline-block;  
+  
+  border: 1px solid black;
 }
 
 .price-text {
-  border: 1px solid white;
-  padding: 5px;
+  border: 1px solid black;
+  padding: 10px;
+ 
+  
+}
+
+.table-container {
+  
+  margin-top: 5%;
 }
