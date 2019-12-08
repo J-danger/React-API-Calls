@@ -24,10 +24,7 @@ class Chart extends Component {
                 avgMonthBTC: result.averages.month.toFixed(2),
                 monthPercentBTC: result.changes.percent.month.toFixed(2)
               });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },           
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -47,10 +44,7 @@ class Chart extends Component {
                 avgMonthETH: result.averages.month.toFixed(2),
                 monthPercentETH: result.changes.percent.month.toFixed(2)
               });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },           
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -71,10 +65,7 @@ class Chart extends Component {
                 avgMonthXMR: result.averages.month.toFixed(2),
                 monthPercentXMR: result.changes.percent.month.toFixed(2)
               });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },           
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -95,10 +86,7 @@ class Chart extends Component {
                 avgMonthBCH: result.averages.month.toFixed(2),
                 monthPercentBCH: result.changes.percent.month.toFixed(2)
               });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },            
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -119,10 +107,7 @@ class Chart extends Component {
                 avgMonthZEC: result.averages.month.toFixed(2),
                 monthPercentZEC: result.changes.percent.month.toFixed(2)
               });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
+            },         
             (error) => {
               this.setState({
                 isLoaded: true,
@@ -168,12 +153,13 @@ class Chart extends Component {
             avgMonthZEC, 
             monthPercentZEC,
         } = this.state;
+
         if (error) {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading...</div>;
         } else {
-          return (   
+          return (  
         <div className="table-container">         
         <table className="table">
         <thead>
@@ -184,8 +170,7 @@ class Chart extends Component {
             <th className="price-text" scope="col">24h Low</th>
             <th className="price-text" scope="col">24h Volume</th>
             <th className="price-text" scope="col">Month Average</th>
-            <th className="price-text" scope="col">Month Difference</th>
-            
+            <th className="price-text" scope="col">Month Difference</th>            
         </tr>
         </thead>
         <tbody>
