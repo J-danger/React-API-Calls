@@ -17,12 +17,12 @@ class Chart extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                priceBTC: result.last,
-                highBTC: result.high,
-                lowBTC: result.low,
-                volBTC: result.volume,
-                avgMonthBTC: result.averages.month,
-                monthPercentBTC: result.changes.percent.month
+                priceBTC: result.last.toFixed(2),
+                highBTC: result.high.toFixed(2),
+                lowBTC: result.low.toFixed(2),
+                volBTC: result.volume.toFixed(2),
+                avgMonthBTC: result.averages.month.toFixed(2),
+                monthPercentBTC: result.changes.percent.month.toFixed(2)
               });
             },
             // Note: it's important to handle errors here
@@ -40,12 +40,12 @@ class Chart extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                priceETH: result.last,
-                highETH: result.high,
-                lowETH: result.low,
-                volETH: result.volume,
-                avgMonthETH: result.averages.month,
-                monthPercentETH: result.changes.percent.month
+                priceETH: result.last.toFixed(2),
+                highETH: result.high.toFixed(2),
+                lowETH: result.low.toFixed(2),
+                volETH: result.volume.toFixed(2),
+                avgMonthETH: result.averages.month.toFixed(2),
+                monthPercentETH: result.changes.percent.month.toFixed(2)
               });
             },
             // Note: it's important to handle errors here
@@ -64,7 +64,12 @@ class Chart extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                lastPriceXMR: result.last
+                priceXMR: result.last.toFixed(2),
+                highXMR: result.high.toFixed(2),
+                lowXMR: result.low.toFixed(2),
+                volXMR: result.volume.toFixed(2),
+                avgMonthXMR: result.averages.month.toFixed(2),
+                monthPercentXMR: result.changes.percent.month.toFixed(2)
               });
             },
             // Note: it's important to handle errors here
@@ -83,7 +88,12 @@ class Chart extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                lastPriceBCH: result.last
+                priceBCH: result.last.toFixed(2),
+                highBCH: result.high.toFixed(2),
+                lowBCH: result.low.toFixed(2),
+                volBCH: result.volume.toFixed(2),
+                avgMonthBCH: result.averages.month.toFixed(2),
+                monthPercentBCH: result.changes.percent.month.toFixed(2)
               });
             },
             // Note: it's important to handle errors here
@@ -102,7 +112,12 @@ class Chart extends Component {
             (result) => {
               this.setState({
                 isLoaded: true,
-                lastPriceZEC: result.last
+                priceZEC: result.last.toFixed(2),
+                highZEC: result.high.toFixed(2),
+                lowZEC: result.low.toFixed(2),
+                volZEC: result.volume.toFixed(2),
+                avgMonthZEC: result.averages.month.toFixed(2),
+                monthPercentZEC: result.changes.percent.month.toFixed(2)
               });
             },
             // Note: it's important to handle errors here
@@ -134,10 +149,24 @@ class Chart extends Component {
             volETH, 
             avgMonthETH, 
             monthPercentETH, 
-            lastPriceETH, 
-            lastPriceXMR, 
-            lastPriceBCH, 
-            lastPriceZEC 
+            priceXMR, 
+            highXMR, 
+            lowXMR, 
+            volXMR, 
+            avgMonthXMR, 
+            monthPercentXMR, 
+            priceBCH, 
+            highBCH, 
+            lowBCH, 
+            volBCH, 
+            avgMonthBCH, 
+            monthPercentBCH,
+            priceZEC, 
+            highZEC, 
+            lowZEC, 
+            volZEC, 
+            avgMonthZEC, 
+            monthPercentZEC,
         } = this.state;
         if (error) {
           return <div>Error: {error.message}</div>;
@@ -147,16 +176,16 @@ class Chart extends Component {
           return (            
        <table class="table">
         <thead>
-            <tr>
-                <th class="price-text" scope="col">Coin/Token</th>
-                <th class="price-text" scope="col">Price</th>
-                <th class="price-text" scope="col">24h High</th>
-                <th class="price-text" scope="col">24h Low</th>
-                <th class="price-text" scope="col">24h Volume</th>
-                <th class="price-text" scope="col">Month Average</th>
-                <th class="price-text" scope="col">Month Difference</th>
-                
-            </tr>
+        <tr>
+            <th class="price-text" scope="col">Coin/Token</th>
+            <th class="price-text" scope="col">Price</th>
+            <th class="price-text" scope="col">24h High</th>
+            <th class="price-text" scope="col">24h Low</th>
+            <th class="price-text" scope="col">24h Volume</th>
+            <th class="price-text" scope="col">Month Average</th>
+            <th class="price-text" scope="col">Month Difference</th>
+            
+        </tr>
         </thead>
         <tbody>
         <tr>
@@ -175,8 +204,34 @@ class Chart extends Component {
             <td class="price-text" >${lowETH}</td>
             <td class="price-text" >${volETH}</td>
             <td class="price-text" >${avgMonthETH}</td>
-            <td class="price-text" >{monthPercentETH}%</td>
-           
+            <td class="price-text" >{monthPercentETH}%</td>           
+        </tr>
+        <tr>
+            <th class="price-text" scope="row">XMR</th>
+            <td class="price-text" >${priceXMR}</td>
+            <td class="price-text" >${highXMR}</td>
+            <td class="price-text" >${lowXMR}</td>
+            <td class="price-text" >${volXMR}</td>
+            <td class="price-text" >${avgMonthXMR}</td>
+            <td class="price-text" >{monthPercentXMR}%</td>           
+        </tr>
+        <tr>
+            <th class="price-text" scope="row">BCH</th>
+            <td class="price-text" >${priceBCH}</td>
+            <td class="price-text" >${highBCH}</td>
+            <td class="price-text" >${lowBCH}</td>
+            <td class="price-text" >${volBCH}</td>
+            <td class="price-text" >${avgMonthBCH}</td>
+            <td class="price-text" >{monthPercentBCH}%</td>           
+        </tr>
+        <tr>
+            <th class="price-text" scope="row">ZEC</th>
+            <td class="price-text" >${priceZEC}</td>
+            <td class="price-text" >${highZEC}</td>
+            <td class="price-text" >${lowZEC}</td>
+            <td class="price-text" >${volZEC}</td>
+            <td class="price-text" >${avgMonthZEC}</td>
+            <td class="price-text" >{monthPercentZEC}%</td>           
         </tr>
 
 
