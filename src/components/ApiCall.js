@@ -49,15 +49,11 @@ class ApiCall extends Component {
             }            
             else {
               return (
-                <>
-                  <div className="difference-container">
-                    <div className="difference">
-                      <h2> Bitcoin's Price has changed by {parseFloat(difference).toFixed(2)}%</h2>
-                    </div>
-                  </div>                                
+                <div className="text-container">  
+                  <h2> Bitcoin's Price has changed by {parseFloat(difference).toFixed(2)}%</h2>
                   <h2 id="bitcoinPrice">Current Price: ${parseFloat(current).toFixed(2)}</h2> 
                   <h2>It was worth ${this.state.lastPrice} last time you checked </h2>  
-                </>
+                </div>
               );
             }
           }
