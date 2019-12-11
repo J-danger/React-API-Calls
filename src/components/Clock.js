@@ -15,7 +15,8 @@ class Clock extends Component {
             this.setState({ time: new Date() });
         }, 1 * 1000); 
         let { time } = this.state;
-        localStorage.setItem("lastTime", time.toLocaleDateString()) 
+        localStorage.setItem("lastDate", time.toLocaleDateString()) 
+        localStorage.setItem("lastTime", time.toLocaleTimeString()) 
     }
 
     componentWillUnmount() { // delete the interval just before component is removed
@@ -30,7 +31,7 @@ class Clock extends Component {
             
             <h2>
                 {/* print the string prettily */}
-                {time.toLocaleDateString()}
+                {time.toLocaleTimeString()}
             </h2>
         </div>);
     }

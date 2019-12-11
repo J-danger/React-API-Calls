@@ -1,8 +1,7 @@
 Body {
   background: #f8f8ff;
   background-size: cover;
-  color: rgb(0, 0, 0);
-  
+  color: rgb(0, 0, 0);  
   font-family: 'Nanum Gothic', sans-serif;
   margin-top: 5%;
 }
@@ -38,4 +37,11 @@ li {
 .table-container {
   
   margin-top: 5%;
+}
+
+.Clock {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  
 }

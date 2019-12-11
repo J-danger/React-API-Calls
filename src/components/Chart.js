@@ -1,8 +1,9 @@
 import React, { Component } from "react"
+import { bar } from 'react-chartjs-2';
 
 class Chart extends Component {
     constructor(props) {
-        super(props);
+        super(props);        
         this.state = {
           error: null,
           isLoaded: false,
@@ -116,9 +117,66 @@ class Chart extends Component {
             }
           )
           )
-      }
+          
+        }
 
+      // handleBTCClick(e) {        
+      //     e.preventDefault();
+      //     console.log('The link was clicked.');
+      //     fetch("https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=daily&?format=json")
+      //     .then(res => res.json())
+      //     .then(
+      //       (result) => {
+      //         this.setState({
+      //           isLoaded: true,
+      //           priceZEC: result.last.toFixed(2),
+      //           highZEC: result.high.toFixed(2),
+      //           lowZEC: result.low.toFixed(2),
+      //           volZEC: result.volume.toFixed(2),
+      //           avgMonthZEC: result.averages.month.toFixed(2),
+      //           monthPercentZEC: result.changes.percent.month.toFixed(2)
+      //         });
+      //       //   var data = [
+      //       //     { x: 1, bitcoin: result[1440].average},
+      //       //     { x: 2, bitcoin: result[1380].average},
+      //       //     { x: 3, bitcoin: result[1320].average},
+      //       //     { x: 4, bitcoin: result[1260].average},
+      //       //     { x: 5, bitcoin: result[1200].average},
+      //       //     { x: 6, bitcoin: result[1140].average},
+      //       //     { x: 7, bitcoin: result[1080].average},
+      //       //     { x: 8, bitcoin: result[1020].average},
+      //       //     { x: 9, bitcoin: result[960].average},
+      //       //     { x: 10, bitcoin: result[900].average},
+      //       //     { x: 11, bitcoin: result[840].average},
+      //       //     { x: 12, bitcoin: result[780].average},
+      //       //     { x: 13, bitcoin: result[720].average},
+      //       //     { x: 14, bitcoin: result[660].average},
+      //       //     { x: 15, bitcoin: result[600].average},
+      //       //     { x: 16, bitcoin: result[540].average},
+      //       //     { x: 17, bitcoin: result[480].average},
+      //       //     { x: 18, bitcoin: result[420].average},
+      //       //     { x: 19, bitcoin: result[360].average},
+      //       //     { x: 20, bitcoin: result[300].average},
+      //       //     { x: 21, bitcoin: result[240].average},
+      //       //     { x: 22, bitcoin: result[180].average},
+      //       //     { x: 23, bitcoin: result[120].average},
+      //       //     { x: 24, bitcoin: result[60].average},
+      //       //     { x: 25, bitcoin: result[0].average},              
+                
+      //       // ] 
+                    
+         
+      //       }
+            
+      //     )
+          
+      // }
+
+      
       render() {
+
+      
+
         const { 
             error, 
             isLoaded,
@@ -175,7 +233,7 @@ class Chart extends Component {
         </thead>
         <tbody>
         <tr>
-            <th className="price-text" scope="row">BTC</th>
+            <th className="price-text" scope="row"><a onClick={this.handleBTCClick}>BTC</a></th>
             <td className="price-text" >${priceBTC}</td>
             <td className="price-text" >${highBTC}</td>
             <td className="price-text" >${lowBTC}</td>
@@ -221,10 +279,12 @@ class Chart extends Component {
         </tr>
         </tbody>
         </table>
+
+        
         </div>
           );
         }
       }
-}
+};
 
 export default Chart

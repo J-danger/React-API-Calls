@@ -36,6 +36,8 @@ class ApiCall extends Component {
           render() {
             let { error, isLoaded, current, lastPrice  } = this.state;
             let last = localStorage.getItem("currentPrice")  
+            let lastTime = localStorage.getItem("lastTime")
+            let lastDate = localStorage.getItem("lastDate")
             let difference = (((current - lastPrice) / lastPrice) * 100)
             localStorage.setItem("last", last )         
             localStorage.setItem("currentPrice", current)    
@@ -51,7 +53,7 @@ class ApiCall extends Component {
               return (
                 <div className="text-container">                    
                   <h2> Bitcoin's Price has changed by {parseFloat(difference).toFixed(4)}%</h2>
-                  <h2>It was worth ${this.state.lastPrice} last time you checked </h2>  
+                  <h2>It was worth ${this.state.lastPrice} the last time you checked at {lastTime} on {lastDate}   </h2>  
                 </div>
               );
             }
