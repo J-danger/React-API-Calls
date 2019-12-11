@@ -8,7 +8,9 @@ class ApiCall extends Component {
           error: null,
           isLoaded: false,
           current: [],
-          lastPrice: [],
+          lastPrice: [], 
+          lastDate: localStorage.getItem("lastDate"),
+          lastTime: localStorage.getItem("lastTime"),        
          
         };
       }     
@@ -21,7 +23,8 @@ class ApiCall extends Component {
               this.setState({
                 isLoaded: true,
                 current: result.last.toFixed(2),
-                lastPrice: localStorage.getItem("last"),                
+                lastPrice: localStorage.getItem("last"),
+                    
               });              
             },        
             (error) => {
@@ -34,10 +37,8 @@ class ApiCall extends Component {
           }          
       
           render() {
-            let { error, isLoaded, current, lastPrice  } = this.state;
-            let last = localStorage.getItem("currentPrice")  
-            let lastTime = localStorage.getItem("lastTime")
-            let lastDate = localStorage.getItem("lastDate")
+            let { error, isLoaded, current, lastPrice, lastDate, lastTime } = this.state;
+            let last = localStorage.getItem("currentPrice")            
             let difference = (((current - lastPrice) / lastPrice) * 100)
             localStorage.setItem("last", last )         
             localStorage.setItem("currentPrice", current)    
@@ -57,6 +58,7 @@ class ApiCall extends Component {
                 </div>
               );
             }
+            
           }
 }
 
