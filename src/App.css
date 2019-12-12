@@ -38,12 +38,17 @@ li {
   
   margin-top: 5%;
   padding: 20px;
-  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
+  
 }
 
 tr {
   background: whitesmoke; 
   
+}
+
+.table {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .chart-header {
@@ -57,12 +62,19 @@ tr {
   text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
   font-family: 'Nanum Gothic', sans-serif;
   padding: 5px;
+  font-weight: bold;
+}
+
+.coin-text {
+  font-size: larger;
+  font-style: italic;
 }
 
 .text-container {
   color: #e5e5e5;
   /* border: 1px solid whitesmoke; */
   padding: 20px;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
   
 }
 

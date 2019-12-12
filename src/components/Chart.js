@@ -233,7 +233,7 @@ class Chart extends Component {
         </thead>
         <tbody>
         <tr>
-            <th className="price-text" scope="row"><a onClick={this.handleBTCClick}>BTC</a></th>
+            <th className="coin-text" scope="row"><a onClick={this.handleBTCClick}>BTC</a></th>
             <td className="price-text" >${priceBTC}</td>
             <td className="price-text" >${highBTC}</td>
             <td className="price-text" >${lowBTC}</td>
@@ -242,7 +242,7 @@ class Chart extends Component {
             <td className="price-text" >{monthPercentBTC}%</td>           
         </tr>
         <tr>
-            <th className="price-text" scope="row">ETH</th>
+            <th className="coin-text" scope="row">ETH</th>
             <td className="price-text" >${priceETH}</td>
             <td className="price-text" >${highETH}</td>
             <td className="price-text" >${lowETH}</td>
@@ -251,7 +251,7 @@ class Chart extends Component {
             <td className="price-text" >{monthPercentETH}%</td>           
         </tr>
         <tr>
-            <th className="price-text" scope="row">XMR</th>
+            <th className="coin-text" scope="row">XMR</th>
             <td className="price-text" >${priceXMR}</td>
             <td className="price-text" >${highXMR}</td>
             <td className="price-text" >${lowXMR}</td>
@@ -260,7 +260,7 @@ class Chart extends Component {
             <td className="price-text" >{monthPercentXMR}%</td>           
         </tr>
         <tr>
-            <th className="price-text" scope="row">BCH</th>
+            <th className="coin-text" scope="row">BCH</th>
             <td className="price-text" >${priceBCH}</td>
             <td className="price-text" >${highBCH}</td>
             <td className="price-text" >${lowBCH}</td>
@@ -269,7 +269,7 @@ class Chart extends Component {
             <td className="price-text" >{monthPercentBCH}%</td>           
         </tr>
         <tr>
-            <th className="price-text" scope="row">ZEC</th>
+            <th className="coin-text" scope="row">ZEC</th>
             <td className="price-text" >${priceZEC}</td>
             <td className="price-text" >${highZEC}</td>
             <td className="price-text" >${lowZEC}</td>
