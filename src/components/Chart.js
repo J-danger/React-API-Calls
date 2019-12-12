@@ -222,13 +222,13 @@ class Chart extends Component {
         <table className="table">
         <thead>
         <tr>
-            <th className="price-text" scope="col">Coin/Token</th>
-            <th className="price-text" scope="col">Price</th>
-            <th className="price-text" scope="col">24h High</th>
-            <th className="price-text" scope="col">24h Low</th>
-            <th className="price-text" scope="col">24h Volume</th>
-            <th className="price-text" scope="col">Month Average</th>
-            <th className="price-text" scope="col">Month Difference</th>            
+            <th className="chart-header" scope="col">Coin/Token</th>
+            <th className="chart-header" scope="col">Price</th>
+            <th className="chart-header" scope="col">24h High</th>
+            <th className="chart-header" scope="col">24h Low</th>
+            <th className="chart-header" scope="col">24h Volume</th>
+            <th className="chart-header" scope="col">Month Average</th>
+            <th className="chart-header" scope="col">Month Difference</th>            
         </tr>
         </thead>
         <tbody>

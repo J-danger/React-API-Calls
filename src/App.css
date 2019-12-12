@@ -1,5 +1,5 @@
 Body {
-  background: #f8f8ff;
+  background: #23374d;
   background-size: cover;
   color: rgb(0, 0, 0);  
   font-family: 'Nanum Gothic', sans-serif;
@@ -24,24 +24,52 @@ li {
   text-align: center;
   display: inline-block;  
   
-  border: 1px solid black;
+  /* border: 1px solid whitesmoke; */
 }
 
 .price-text {
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
   padding: 10px;
- 
+  color: whitesmoke;
   
 }
 
 .table-container {
   
   margin-top: 5%;
+  padding: 20px;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+}
+
+tr {
+  background: whitesmoke; 
+  
+}
+
+.chart-header {
+  background: #1089ff;
+  color: white;
+  padding: 10px;
+}
+
+.price-text {
+  color: black;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
+  font-family: 'Nanum Gothic', sans-serif;
+  padding: 5px;
+}
+
+.text-container {
+  color: #e5e5e5;
+  /* border: 1px solid whitesmoke; */
+  padding: 20px;
+  
 }
 
 .Clock {
   position: absolute;
   top: 0px;
   right: 5px;
+  color: #e3b04b;
   
 }
