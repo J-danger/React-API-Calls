@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { bar } from 'react-chartjs-2';
+// import { bar } from 'react-chartjs-2';
 
 class Chart extends Component {
     constructor(props) {
@@ -219,7 +219,7 @@ class Chart extends Component {
         } else {
           return (  
         <div className="table-container">         
-        <table className="table">
+        <table className="table" >
         <thead>
         <tr>
             <th className="chart-header" scope="col">Coin/Token</th>
@@ -233,7 +233,7 @@ class Chart extends Component {
         </thead>
         <tbody>
         <tr>
-            <th className="coin-text" scope="row"><a onClick={this.handleBTCClick}>BTC</a></th>
+            <th className="coin-text" scope="row">BTC</th>
             <td className="price-text" >${priceBTC}</td>
             <td className="price-text" >${highBTC}</td>
             <td className="price-text" >${lowBTC}</td>

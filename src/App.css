@@ -23,32 +23,31 @@ li {
 .table {
   text-align: center;
   display: inline-block;  
-  
+  border-spacing: 0px;
+ 
   /* border: 1px solid whitesmoke; */
 }
 
-.price-text {
-  border: 1px solid whitesmoke;
-  padding: 10px;
-  color: whitesmoke;
-  
-}
+
 
 .table-container {
   
   margin-top: 5%;
   padding: 20px;
-  text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
+  /* text-shadow: 2px 8px 6px rgba(0,0,0,0.2); */
   
 }
 
-tr {
+tbody > tr {
   background: whitesmoke; 
   
 }
 
+
+
 .table {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  
 }
 
 .chart-header {
@@ -59,15 +58,21 @@ tr {
 
 .price-text {
   color: black;
-  text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
+  /* text-shadow: 2px 8px 6px rgba(0,0,0,0.2); */
   font-family: 'Nanum Gothic', sans-serif;
-  padding: 5px;
+  padding: 10px;
   font-weight: bold;
+  border-bottom: 1px solid black;
+  
 }
+
+
 
 .coin-text {
   font-size: larger;
   font-style: italic;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
 }
 
 .text-container {
