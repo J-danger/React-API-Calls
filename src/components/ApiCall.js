@@ -54,7 +54,7 @@ class ApiCall extends Component {
             else {
               return (
                 <div className="text-container">                    
-            <h2> Bitcoin's Price has changed by ${difference.toFixed(2)} ({parseFloat(differencePerc).toFixed(4)}%)</h2>
+                  <h2> Bitcoin's Price has changed by ${difference.toFixed(2)} ({parseFloat(differencePerc).toFixed(4)}%)</h2>
                   <h2>It was worth ${this.state.lastPrice} the last time you checked at {lastTime} on {lastDate}   </h2>  
                 </div>
               );
