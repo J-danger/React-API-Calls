@@ -10,8 +10,7 @@ class Table extends Component {
           error: null,
           isLoaded: false,
           priceBTC: [],
-          chartData:props.chartData,
-          volBTC:[]
+          chartData:props.chartData,          
         };
       }
       static defaultProps = {
@@ -129,42 +128,38 @@ class Table extends Component {
                 error
               });
             }
-          )
-          ).then(
-            this.getChartData()
+            )
+            ).then(
+              
+            this.setState({
+              chartData:{
+                labels: ['BTC', 'ETH', 'XMR', 'BCH', 'ZEC'],
+                datasets:[
+                  {
+                    label:'Volume in USD',
+                    data:[
+                      this.state.volBTC,
+                      181045,
+                      153060,
+                      106519,
+                      105162,
+                      95072
+                    ],
+                    backgroundColor:[
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                      'rgba(255, 206, 86, 0.6)',
+                      'rgba(75, 192, 192, 0.6)',
+                      'rgba(153, 102, 255, 0.6)',
+                      'rgba(255, 159, 64, 0.6)',
+                      'rgba(255, 99, 132, 0.6)'
+                    ]
+                  }
+                ]
+              }
+            })
           )             
-        }
-
-        getChartData(){
-          // Ajax calls here
-          this.setState({
-            chartData:{
-              labels: ['BTC', 'ETH', 'XMR', 'BCH', 'ZEC'],
-              datasets:[
-                {
-                  label:'Population',
-                  data:[
-                    this.state.volBTC,
-                    181045,
-                    153060,
-                    106519,
-                    105162,
-                    95072
-                  ],
-                  backgroundColor:[
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                    'rgba(153, 102, 255, 0.6)',
-                    'rgba(255, 159, 64, 0.6)',
-                    'rgba(255, 99, 132, 0.6)'
-                  ]
-                }
-              ]
-            }
-          });
-        }
+        }    
 
 
       
@@ -274,7 +269,7 @@ class Table extends Component {
         </tr>
         </tbody>
         </table>
-        <Bar
+        {/* <Bar
           data={this.state.chartData}
           options={{
             title:{
@@ -287,7 +282,7 @@ class Table extends Component {
               position:this.props.legendPosition
             }
           }}
-        />
+        /> */}
         
         </div>
           );
