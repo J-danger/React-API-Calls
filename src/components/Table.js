@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 // import Chart from './Chart'
 import {Bar, Line, Pie} from 'react-chartjs-2';
 // import { bar } from 'react-chartjs-2';
@@ -25,7 +25,7 @@ class Table extends Component {
       // }    
 
       componentDidMount() {
-        fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD")
+        fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD')
           .then(res => res.json())
           .then(
             (result) => {
@@ -45,7 +45,14 @@ class Table extends Component {
                 error
               });
             }
-          ).then(fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/ETHUSD")
+          )
+          .then(
+            (result) => {
+              let monthPercentBTC = this.state.monthPercentBTC
+              localStorage.setItem('monthPercentBTC', monthPercentBTC )
+            }
+          )
+          .then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/ETHUSD')
           .then(res => res.json())
           .then(
             (result) => {
@@ -65,8 +72,13 @@ class Table extends Component {
                 error
               });
             }
+          ).then(
+            (result) => {
+              let monthPercentETH = this.state.monthPercentETH
+              localStorage.setItem('monthPercentETH', monthPercentETH )
+            }
           )
-          ).then(fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/XMRUSD")
+          ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/XMRUSD')
           .then(res => res.json())
           .then(
             (result) => {
@@ -86,8 +98,13 @@ class Table extends Component {
                 error
               });
             }
+          ).then(
+            (result) => {
+              let monthPercentXMR = this.state.monthPercentXMR
+              localStorage.setItem('monthPercentXMR', monthPercentXMR )
+            }
           )
-          ).then(fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/BCHUSD")
+          ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/BCHUSD')
           .then(res => res.json())
           .then(
             (result) => {
@@ -107,8 +124,13 @@ class Table extends Component {
                 error
               });
             }
+          ).then(
+            (result) => {
+              let monthPercentBCH = this.state.monthPercentBCH
+              localStorage.setItem('monthPercentBCH', monthPercentBCH )
+            }
           )
-          ).then(fetch("https://apiv2.bitcoinaverage.com/indices/global/ticker/ZECUSD")
+          ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/ZECUSD')
           .then(res => res.json())
           .then(
             (result) => {
@@ -128,37 +150,13 @@ class Table extends Component {
                 error
               });
             }
-            )
             ).then(
-              
-            this.setState({
-              chartData:{
-                labels: ['BTC', 'ETH', 'XMR', 'BCH', 'ZEC'],
-                datasets:[
-                  {
-                    label:'Volume in USD',
-                    data:[
-                      this.state.volBTC,
-                      181045,
-                      153060,
-                      106519,
-                      105162,
-                      95072
-                    ],
-                    backgroundColor:[
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(54, 162, 235, 0.6)',
-                      'rgba(255, 206, 86, 0.6)',
-                      'rgba(75, 192, 192, 0.6)',
-                      'rgba(153, 102, 255, 0.6)',
-                      'rgba(255, 159, 64, 0.6)',
-                      'rgba(255, 99, 132, 0.6)'
-                    ]
-                  }
-                ]
+              (result) => {
+                let monthPercentZEC = this.state.monthPercentZEC
+                localStorage.setItem('monthPercentZEC', monthPercentZEC )
               }
-            })
-          )             
+            )
+            )
         }    
 
 
@@ -208,64 +206,64 @@ class Table extends Component {
           return <div>Loading...</div>;
         } else {
           return (  
-        <div className="table-container">         
-        <table className="table" >
+        <div className='table-container'>         
+        <table className='table' >
         <thead>
         <tr>
-            <th className="chart-header" scope="col">Coin/Token</th>
-            <th className="chart-header" scope="col">Price</th>
-            <th className="chart-header" scope="col">24h High</th>
-            <th className="chart-header" scope="col">24h Low</th>
-            <th className="chart-header" scope="col">24h Volume</th>
-            <th className="chart-header" scope="col">Month Average</th>
-            <th className="chart-header" scope="col">Month Difference</th>            
+            <th className='chart-header' scope='col'>Coin/Token</th>
+            <th className='chart-header' scope='col'>Price</th>
+            <th className='chart-header' scope='col'>24h High</th>
+            <th className='chart-header' scope='col'>24h Low</th>
+            <th className='chart-header' scope='col'>24h Volume</th>
+            <th className='chart-header' scope='col'>Month Average</th>
+            <th className='chart-header' scope='col'>Month Difference</th>            
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th className="coin-text" scope="row">BTC</th>
-            <td className="price-text" >${priceBTC}</td>
-            <td className="price-text" >${highBTC}</td>
-            <td className="price-text" >${lowBTC}</td>
-            <td className="price-text" >${volBTC}</td>
-            <td className="price-text" >${avgMonthBTC}</td>
-            <td className="price-text" >{monthPercentBTC}%</td>           
+            <th className='coin-text' scope='row'>BTC</th>
+            <td className='price-text' >${priceBTC}</td>
+            <td className='price-text' >${highBTC}</td>
+            <td className='price-text' >${lowBTC}</td>
+            <td className='price-text' >${volBTC}</td>
+            <td className='price-text' >${avgMonthBTC}</td>
+            <td className='price-text' >{monthPercentBTC}%</td>           
         </tr>
         <tr>
-            <th className="coin-text" scope="row">ETH</th>
-            <td className="price-text" >${priceETH}</td>
-            <td className="price-text" >${highETH}</td>
-            <td className="price-text" >${lowETH}</td>
-            <td className="price-text" >${volETH}</td>
-            <td className="price-text" >${avgMonthETH}</td>
-            <td className="price-text" >{monthPercentETH}%</td>           
+            <th className='coin-text' scope='row'>ETH</th>
+            <td className='price-text' >${priceETH}</td>
+            <td className='price-text' >${highETH}</td>
+            <td className='price-text' >${lowETH}</td>
+            <td className='price-text' >${volETH}</td>
+            <td className='price-text' >${avgMonthETH}</td>
+            <td className='price-text' >{monthPercentETH}%</td>           
         </tr>
         <tr>
-            <th className="coin-text" scope="row">XMR</th>
-            <td className="price-text" >${priceXMR}</td>
-            <td className="price-text" >${highXMR}</td>
-            <td className="price-text" >${lowXMR}</td>
-            <td className="price-text" >${volXMR}</td>
-            <td className="price-text" >${avgMonthXMR}</td>
-            <td className="price-text" >{monthPercentXMR}%</td>           
+            <th className='coin-text' scope='row'>XMR</th>
+            <td className='price-text' >${priceXMR}</td>
+            <td className='price-text' >${highXMR}</td>
+            <td className='price-text' >${lowXMR}</td>
+            <td className='price-text' >${volXMR}</td>
+            <td className='price-text' >${avgMonthXMR}</td>
+            <td className='price-text' >{monthPercentXMR}%</td>           
         </tr>
         <tr>
-            <th className="coin-text" scope="row">BCH</th>
-            <td className="price-text" >${priceBCH}</td>
-            <td className="price-text" >${highBCH}</td>
-            <td className="price-text" >${lowBCH}</td>
-            <td className="price-text" >${volBCH}</td>
-            <td className="price-text" >${avgMonthBCH}</td>
-            <td className="price-text" >{monthPercentBCH}%</td>           
+            <th className='coin-text' scope='row'>BCH</th>
+            <td className='price-text' >${priceBCH}</td>
+            <td className='price-text' >${highBCH}</td>
+            <td className='price-text' >${lowBCH}</td>
+            <td className='price-text' >${volBCH}</td>
+            <td className='price-text' >${avgMonthBCH}</td>
+            <td className='price-text' >{monthPercentBCH}%</td>           
         </tr>
         <tr>
-            <th className="coin-text" scope="row">ZEC</th>
-            <td className="price-text" >${priceZEC}</td>
-            <td className="price-text" >${highZEC}</td>
-            <td className="price-text" >${lowZEC}</td>
-            <td className="price-text" >${volZEC}</td>
-            <td className="price-text" >${avgMonthZEC}</td>
-            <td className="price-text" >{monthPercentZEC}%</td>           
+            <th className='coin-text' scope='row'>ZEC</th>
+            <td className='price-text' >${priceZEC}</td>
+            <td className='price-text' >${highZEC}</td>
+            <td className='price-text' >${lowZEC}</td>
+            <td className='price-text' >${volZEC}</td>
+            <td className='price-text' >${avgMonthZEC}</td>
+            <td className='price-text' >{monthPercentZEC}%</td>           
         </tr>
         </tbody>
         </table>

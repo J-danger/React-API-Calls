@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import ApiCall from "./components/ApiCall.js"
-import Table from "./components/Table.js"
-import Clock from "./components/Clock.js"
-import Chart from "./components/Chart.js"
+import ApiCall from './components/ApiCall.js'
+import Table from './components/Table.js'
+import Clock from './components/Clock.js'
+import Chart from './components/Chart.js'
 import './App.css';
 
 class App extends Component {
@@ -51,17 +51,18 @@ class App extends Component {
   // }
   
   render(){
-    if (localStorage.getItem("Last")){
+    if (localStorage.getItem('Last')){
       return(
       <>test</>
       )
     } else {
   return (
-    <div className="App">
-      <div className="Container"> 
+    <div className='App'>
+      <div className='Container'> 
         <Clock /> 
         <ApiCall />       
         <Table />
+        <Chart />
         
       </div>
     </div>

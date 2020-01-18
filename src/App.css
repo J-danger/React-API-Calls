@@ -32,7 +32,7 @@ li {
 
 .table-container {
   
-  margin-top: 5%;
+  margin-top: 2.5%;
   padding: 20px;
   /* text-shadow: 2px 8px 6px rgba(0,0,0,0.2); */
   
@@ -78,7 +78,7 @@ tbody > tr {
 .text-container {
   color: #e5e5e5;
   /* border: 1px solid whitesmoke; */
-  padding: 20px;
+ 
   text-shadow: 2px 8px 6px rgba(0,0,0,0.2);
   
 }
@@ -89,4 +89,10 @@ tbody > tr {
   right: 5px;
   color: #e3b04b;
   
+}
+
+.chart {
+  width: 100%;
+  float: left;
+  margin: 20px 0 20px 0;
 }

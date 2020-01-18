@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 
 class Clock extends Component {
 
@@ -16,12 +16,12 @@ class Clock extends Component {
             this.setState({ time: new Date() });
         }, 1 * 1000);
         this.setState({            
-            lastDate: localStorage.getItem("lastDate"),
-            lastTime: localStorage.getItem("lastTime"),                
+            lastDate: localStorage.getItem('lastDate'),
+            lastTime: localStorage.getItem('lastTime'),                
           });              
           let { time } = this.state;
-      localStorage.setItem("lastDate", time.toLocaleDateString()) 
-      localStorage.setItem("lastTime", time.toLocaleTimeString()) 
+      localStorage.setItem('lastDate', time.toLocaleDateString()) 
+      localStorage.setItem('lastTime', time.toLocaleTimeString()) 
           
         }
         
@@ -33,7 +33,7 @@ class Clock extends Component {
         let { time } = this.state; // retrieve the time from state
 
         return (
-        <div className="Clock">
+        <div className='Clock'>
             
             <h2>
                 {/* print the string prettily */}

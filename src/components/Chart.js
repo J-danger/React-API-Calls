@@ -1,6 +1,6 @@
   
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line, Pie, Doughnut, Bubble} from 'react-chartjs-2';
 
 class Chart extends Component{
   constructor(props){
@@ -18,55 +18,59 @@ class Chart extends Component{
     coin:[]
   }
 
-//   componentWillMount(){
-//     this.getChartData();
-//   }
+  componentWillMount(){
+    this.getChartData();
+  }
 
-//   getChartData(){
-//     // Ajax calls here
-//     this.setState({
-//       chartData:{
-//         labels: ['BTC', 'ETH', 'XMR', 'BCH', 'ZEC'],
-//         datasets:[
-//           {
-//             label:'Population',
-//             data:[
-//               181045,
-//               181045,
-//               153060,
-//               106519,
-//               105162,
-//               95072
-//             ],
-//             backgroundColor:[
-//               'rgba(255, 99, 132, 0.6)',
-//               'rgba(54, 162, 235, 0.6)',
-//               'rgba(255, 206, 86, 0.6)',
-//               'rgba(75, 192, 192, 0.6)',
-//               'rgba(153, 102, 255, 0.6)',
-//               'rgba(255, 159, 64, 0.6)',
-//               'rgba(255, 99, 132, 0.6)'
-//             ]
-//           }
-//         ]
-//       }
-//     });
-//   }
+  getChartData(){
+    
+    this.setState({
+      chartData:{
+        labels: ['BTC', 'ETH', 'XMR', 'BCH', 'ZEC'],
+        datasets:[
+          {
+            label:'%',
+            data:[
+              localStorage.getItem('monthPercentBTC'),
+              localStorage.getItem('monthPercentETH'),
+              localStorage.getItem('monthPercentXMR'),
+              localStorage.getItem('monthPercentBCH'),
+              localStorage.getItem('monthPercentZEC')
+                        
+            ],
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(153, 102, 255, 0.6)',
+              'rgba(255, 159, 64, 0.6)',
+              'rgba(255, 99, 132, 0.6)'
+            ]
+          }
+        ]
+      }
+    });
+  }
 
   render(){
     return (
-      <div className="chart">
-        <Bar
+      <div className='chart'>
+        <Doughnut
           data={this.state.chartData}
+          width={100}
+          height={20}
+          // 
           options={{
             title:{
               display:this.props.displayTitle,
-              text:'24 Hour Volume',
-              fontSize:25
+              text:'Monthly growth',
+              fontSize:25,
+              color: 'white'
             },
             legend:{
               display:this.props.displayLegend,
-              position:this.props.legendPosition
+              position:'bottom'
             }
           }}
         />
