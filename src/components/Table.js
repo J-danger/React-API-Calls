@@ -294,7 +294,7 @@ class Table extends Component {
 
         if (error) {
           return (
-          <div>Error: {error.message}</div>;
+          <div>Error: {error.message}</div>
           );
         } else if (!isLoaded) {
           return (
