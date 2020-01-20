@@ -10,7 +10,9 @@ class Table extends Component {
           error: null,
           isLoaded: false,
           priceBTC: [],
-          chartData:props.chartData,          
+          chartData:props.chartData,
+          lastDate: localStorage.getItem('lastDate'),
+          lastTime: localStorage.getItem('lastTime'),           
         };
       }
       static defaultProps = {
@@ -36,7 +38,8 @@ class Table extends Component {
                 lowBTC: result.low.toFixed(2),
                 volBTC: result.volume.toFixed(2),
                 avgMonthBTC: result.averages.month.toFixed(2),
-                monthPercentBTC: result.changes.percent.month.toFixed(2)
+                monthPercentBTC: result.changes.percent.month.toFixed(2),
+                lastBTC: localStorage.getItem('lastBTC')
               });
             },           
             (error) => {
@@ -50,6 +53,8 @@ class Table extends Component {
             (result) => {
               let monthPercentBTC = this.state.monthPercentBTC
               localStorage.setItem('monthPercentBTC', monthPercentBTC )
+              let lastBTC = this.state.priceBTC
+              localStorage.setItem('lastBTC', lastBTC)              
             }
           )
           .then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/ETHUSD')
@@ -63,7 +68,8 @@ class Table extends Component {
                 lowETH: result.low.toFixed(2),
                 volETH: result.volume.toFixed(2),
                 avgMonthETH: result.averages.month.toFixed(2),
-                monthPercentETH: result.changes.percent.month.toFixed(2)
+                monthPercentETH: result.changes.percent.month.toFixed(2),
+                lastETH: localStorage.getItem('lastETH')
               });
             },           
             (error) => {
@@ -76,6 +82,8 @@ class Table extends Component {
             (result) => {
               let monthPercentETH = this.state.monthPercentETH
               localStorage.setItem('monthPercentETH', monthPercentETH )
+              let lastETH = this.state.priceETH
+              localStorage.setItem('lastETH', lastETH)
             }
           )
           ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/XMRUSD')
@@ -89,7 +97,8 @@ class Table extends Component {
                 lowXMR: result.low.toFixed(2),
                 volXMR: result.volume.toFixed(2),
                 avgMonthXMR: result.averages.month.toFixed(2),
-                monthPercentXMR: result.changes.percent.month.toFixed(2)
+                monthPercentXMR: result.changes.percent.month.toFixed(2),
+                lastXMR: localStorage.getItem('lastXMR')
               });
             },           
             (error) => {
@@ -102,6 +111,8 @@ class Table extends Component {
             (result) => {
               let monthPercentXMR = this.state.monthPercentXMR
               localStorage.setItem('monthPercentXMR', monthPercentXMR )
+              let lastXMR = this.state.priceXMR
+              localStorage.setItem('lastXMR', lastXMR)
             }
           )
           ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/BCHUSD')
@@ -115,7 +126,8 @@ class Table extends Component {
                 lowBCH: result.low.toFixed(2),
                 volBCH: result.volume.toFixed(2),
                 avgMonthBCH: result.averages.month.toFixed(2),
-                monthPercentBCH: result.changes.percent.month.toFixed(2)
+                monthPercentBCH: result.changes.percent.month.toFixed(2),
+                lastBCH: localStorage.getItem('lastBCH')
               });
             },            
             (error) => {
@@ -128,6 +140,8 @@ class Table extends Component {
             (result) => {
               let monthPercentBCH = this.state.monthPercentBCH
               localStorage.setItem('monthPercentBCH', monthPercentBCH )
+              let lastBCH = this.state.priceBCH
+              localStorage.setItem('lastBCH', lastBCH)
             }
           )
           ).then(fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/ZECUSD')
@@ -141,7 +155,8 @@ class Table extends Component {
                 lowZEC: result.low.toFixed(2),
                 volZEC: result.volume.toFixed(2),
                 avgMonthZEC: result.averages.month.toFixed(2),
-                monthPercentZEC: result.changes.percent.month.toFixed(2)
+                monthPercentZEC: result.changes.percent.month.toFixed(2),
+                lastZEC: localStorage.getItem('lastZEC')
               });
             },         
             (error) => {
@@ -154,6 +169,8 @@ class Table extends Component {
               (result) => {
                 let monthPercentZEC = this.state.monthPercentZEC
                 localStorage.setItem('monthPercentZEC', monthPercentZEC )
+                let lastZEC = this.state.priceZEC
+                localStorage.setItem('lastZEC', lastZEC)
               }
             )
             )
@@ -163,7 +180,19 @@ class Table extends Component {
       
       render() {
 
-      
+        let differenceBTC = (this.state.priceBTC - this.state.lastBTC).toFixed(2)
+        let differencePercBTC = (((this.state.priceBTC - this.state.lastBTC) / this.state.lastBTC) * 100)
+        let differenceETH = (this.state.priceETH - this.state.lastETH).toFixed(2)
+        let differencePercETH = (((this.state.priceETH - this.state.lastETH) / this.state.lastETH) * 100)
+        let differenceXMR = (this.state.priceXMR - this.state.lastXMR).toFixed(2)
+        let differencePercXMR = (((this.state.priceXMR - this.state.lastXMR) / this.state.lastXMR) * 100)
+        let differenceBCH = (this.state.priceBCH - this.state.lastBCH).toFixed(2)
+        let differencePercBCH = (((this.state.priceBCH - this.state.lastBCH) / this.state.lastBCH) * 100)
+        let differenceZEC = (this.state.priceZEC - this.state.lastZEC).toFixed(2)
+        let differencePercZEC = (((this.state.priceZEC - this.state.lastZEC) / this.state.lastZEC) * 100)
+        console.log (differenceBTC, differenceBCH, differenceETH, differenceXMR, differenceZEC)
+        
+            
 
         const { 
             error, 
@@ -198,14 +227,38 @@ class Table extends Component {
             volZEC, 
             avgMonthZEC, 
             monthPercentZEC,
+            
         } = this.state;
 
         if (error) {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading...</div>;
-        } else {
+        } else if (differenceBTC === 'null'){
+          return <div id='reload'>Please refresh the page if this is your first time visiting.</div>
+        }      
+         else {
           return (  
+        <>
+        <button>BTC</button>
+        <button>ETH</button>
+        <button>XMR</button>
+        <button>BCH</button>
+        <button>ZEC</button>
+        <div className='text-container'>                    
+          <h2 className='btc-price'> Bitcoin's Price has changed by ${differenceBTC} ({parseFloat(differencePercBTC).toFixed(4)}%)  </h2>
+          <h2 className='btc-last'> It was work ${this.state.lastBTC} the last time you checked</h2>
+          <h2 hidden className='eth-price'> Ethereum's Price has changed by ${differenceETH} ({parseFloat(differencePercETH).toFixed(4)}%)</h2>
+          <h2 hidden className='eth-last'> It was work ${this.state.lastETH} the last time you checked</h2>
+          <h2 hidden className='xmr-price'> Monero's Price has changed by ${differenceXMR} ({parseFloat(differencePercXMR).toFixed(4)}%)  </h2>
+          <h2 hidden className='xmr-last'> It was work ${this.state.lastXMR} the last time you checked</h2>
+          <h2 hidden className='bch-price'> Bitcoin Cash's Price has changed by ${differenceBCH} ({parseFloat(differencePercBCH).toFixed(4)}%)  </h2>
+          <h2 hidden className='bch-last'> It was work ${this.state.lastBCH} the last time you checked}</h2>
+          <h2 hidden className='zec-price'> Z-Cash's Price has changed by ${differenceZEC} ({parseFloat(differencePercZEC).toFixed(4)}%)  </h2>
+          <h2 hidden className='zec-last'> It was work ${this.state.lastZEC} the last time you checked</h2>
+          {/* <h2>It was worth ${this.state.lastPrice} the last time you checked at {lastTime} on {lastDate}   </h2>   */}
+        </div>
+
         <div className='table-container'>         
         <table className='table' >
         <thead>
@@ -283,6 +336,7 @@ class Table extends Component {
         /> */}
         
         </div>
+        </>
           );
         }
       }

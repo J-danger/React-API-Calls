@@ -60,7 +60,7 @@ class App extends Component {
     <div className='App'>
       <div className='Container'> 
         <Clock /> 
-        <ApiCall />       
+        {/* <ApiCall />        */}
         <Table />
         <Chart />
         
