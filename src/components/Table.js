@@ -293,11 +293,17 @@ class Table extends Component {
         } = this.state;
 
         if (error) {
-          return <div>Error: {error.message}</div>;
+          return (
+          <div>Error: {error.message}</div>;
+          );
         } else if (!isLoaded) {
-          return <div>Loading...</div>;
+          return (
+          <div>Loading...</div>
+          );
         } else if (this.state.lastBTC == null){
-          return <div className='reload'>Please refresh the page if this is your first time visiting.</div>
+          return (
+           <div className='reload'>Please refresh the page if this is your first time visiting.</div>
+          );
         } else if (this.state.showBTC == true){
           return (
           <>
@@ -376,7 +382,7 @@ class Table extends Component {
         </div>
         <Chart />
           </>
-          )
+          );
         } 
         else if (this.state.showETH == true) {
           return (
