@@ -12,7 +12,7 @@ Body {
 }
 
 .Container {  
-  margin-top: 10%;
+ 
   
 }
 
@@ -95,4 +95,18 @@ tbody > tr {
   width: 100%;
   float: left;
   margin: 20px 0 20px 0;
+}
+
+button {
+  border-radius: 5%;
+  padding: 10px;
+  margin: 0 5px 0 5px;
+  color: black;
+  background-color: darkgray;
+  font-weight: bold;
+  width: 100px;
+}
+
+.buttons {
+  margin-bottom: 2%;
 }

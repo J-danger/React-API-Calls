@@ -64,7 +64,7 @@ class Chart extends Component{
           options={{
             title:{
               display:this.props.displayTitle,
-              text:'Monthly growth',
+              text:'Monthly growth %',
               fontSize:25,
               color: 'white'
             },

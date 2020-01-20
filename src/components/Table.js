@@ -300,11 +300,13 @@ class Table extends Component {
         } else if (this.state.showBTC == true){
           return (
           <>
+          <div className='buttons'>
             <button onClick={this.showBTC}>BTC</button>
             <button onClick={this.showETH}>ETH</button>
             <button onClick={this.showXMR}>XMR</button>
             <button onClick={this.showBCH}>BCH</button>
             <button onClick={this.showZEC}>ZEC</button>
+          </div>
             <div className='text-container'>
             <h2 className='btc-price'> Bitcoin's Price has changed by ${differenceBTC} ({parseFloat(differencePercBTC).toFixed(4)}%)  </h2>
             <h2 className='btc-last'> It was work ${this.state.lastBTC} the last time you checked</h2> 
@@ -377,11 +379,13 @@ class Table extends Component {
         else if (this.state.showETH == true) {
           return(
             <>
-            <button onClick={this.showBTC}>BTC</button>
-            <button onClick={this.showETH}>ETH</button>
-            <button onClick={this.showXMR}>XMR</button>
-            <button onClick={this.showBCH}>BCH</button>
-            <button onClick={this.showZEC}>ZEC</button>
+            <div className='buttons'>
+              <button onClick={this.showBTC}>BTC</button>
+              <button onClick={this.showETH}>ETH</button>
+              <button onClick={this.showXMR}>XMR</button>
+              <button onClick={this.showBCH}>BCH</button>
+              <button onClick={this.showZEC}>ZEC</button>
+            </div>
             <div className='text-container'>
             <h2 className='eth-price'> Ethereum's Price has changed by ${differenceETH} ({parseFloat(differencePercETH).toFixed(4)}%)</h2>
             <h2 className='eth-last'> It was work ${this.state.lastETH} the last time you checked</h2>
@@ -454,11 +458,13 @@ class Table extends Component {
         else if (this.state.showXMR == true) {
           return(
             <>
-            <button onClick={this.showBTC}>BTC</button>
-            <button onClick={this.showETH}>ETH</button>
-            <button onClick={this.showXMR}>XMR</button>
-            <button onClick={this.showBCH}>BCH</button>
-            <button onClick={this.showZEC}>ZEC</button>
+            <div className='buttons'>
+              <button onClick={this.showBTC}>BTC</button>
+              <button onClick={this.showETH}>ETH</button>
+              <button onClick={this.showXMR}>XMR</button>
+              <button onClick={this.showBCH}>BCH</button>
+              <button onClick={this.showZEC}>ZEC</button>
+            </div>
             <div className='text-container'>
             <h2 className='xmr-price'> Monero's Price has changed by ${differenceXMR} ({parseFloat(differencePercXMR).toFixed(4)}%)  </h2>
             <h2 className='xmr-last'> It was work ${this.state.lastXMR} the last time you checked</h2>
@@ -531,11 +537,13 @@ class Table extends Component {
         else if (this.state.showBCH == true) {
           return(
             <>
-            <button onClick={this.showBTC}>BTC</button>
-            <button onClick={this.showETH}>ETH</button>
-            <button onClick={this.showXMR}>XMR</button>
-            <button onClick={this.showBCH}>BCH</button>
-            <button onClick={this.showZEC}>ZEC</button>
+            <div className='buttons'>
+              <button onClick={this.showBTC}>BTC</button>
+              <button onClick={this.showETH}>ETH</button>
+              <button onClick={this.showXMR}>XMR</button>
+              <button onClick={this.showBCH}>BCH</button>
+              <button onClick={this.showZEC}>ZEC</button>
+            </div>
             <div className='text-container'>
             <h2 className='bch-price'> Bitcoin Cash's Price has changed by ${differenceBCH} ({parseFloat(differencePercBCH).toFixed(4)}%)  </h2>
             <h2 className='bch-last'> It was work ${this.state.lastBCH} the last time you checked}</h2>
@@ -608,11 +616,13 @@ class Table extends Component {
         else if (this.state.showZEC == true) {
           return(
             <>
-            <button onClick={this.showBTC}>BTC</button>
-            <button onClick={this.showETH}>ETH</button>
-            <button onClick={this.showXMR}>XMR</button>
-            <button onClick={this.showBCH}>BCH</button>
-            <button onClick={this.showZEC}>ZEC</button>
+            <div className='buttons'>
+              <button onClick={this.showBTC}>BTC</button>
+              <button onClick={this.showETH}>ETH</button>
+              <button onClick={this.showXMR}>XMR</button>
+              <button onClick={this.showBCH}>BCH</button>
+              <button onClick={this.showZEC}>ZEC</button>
+            </div>
             <div className='text-container'>
             <h2 className='zec-price'> Z-Cash's Price has changed by ${differenceZEC} ({parseFloat(differencePercZEC).toFixed(4)}%)  </h2>
             <h2 className='zec-last'> It was work ${this.state.lastZEC} the last time you checked</h2>
