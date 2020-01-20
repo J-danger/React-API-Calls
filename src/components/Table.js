@@ -12,20 +12,16 @@ class Table extends Component {
           priceBTC: [],
           chartData:props.chartData,
           lastDate: localStorage.getItem('lastDate'),
-          lastTime: localStorage.getItem('lastTime'),           
+          lastTime: localStorage.getItem('lastTime'),  
+          showChart: true
         };
+        this.showBTC = this.showBTC.bind(this);
+        this.showETH = this.showETH.bind(this);
+        this.showXMR = this.showXMR.bind(this);
+        this.showBCH = this.showBCH.bind(this);
+        this.showZEC = this.showZEC.bind(this);        
       }
-      static defaultProps = {
-        displayTitle:true,
-        displayLegend: true,
-        legendPosition:'right',
-        coin:[]
-      }
-
-      // componentWillMount(){
-      //   this.getChartData();
-      // }    
-
+ 
       componentDidMount() {
         fetch('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD')
           .then(res => res.json())
@@ -39,7 +35,8 @@ class Table extends Component {
                 volBTC: result.volume.toFixed(2),
                 avgMonthBTC: result.averages.month.toFixed(2),
                 monthPercentBTC: result.changes.percent.month.toFixed(2),
-                lastBTC: localStorage.getItem('lastBTC')
+                lastBTC: localStorage.getItem('lastBTC'),
+                showBTC: true
               });
             },           
             (error) => {
@@ -69,7 +66,8 @@ class Table extends Component {
                 volETH: result.volume.toFixed(2),
                 avgMonthETH: result.averages.month.toFixed(2),
                 monthPercentETH: result.changes.percent.month.toFixed(2),
-                lastETH: localStorage.getItem('lastETH')
+                lastETH: localStorage.getItem('lastETH'),
+                showETH: false
               });
             },           
             (error) => {
@@ -98,7 +96,8 @@ class Table extends Component {
                 volXMR: result.volume.toFixed(2),
                 avgMonthXMR: result.averages.month.toFixed(2),
                 monthPercentXMR: result.changes.percent.month.toFixed(2),
-                lastXMR: localStorage.getItem('lastXMR')
+                lastXMR: localStorage.getItem('lastXMR'),
+                showXMR: false
               });
             },           
             (error) => {
@@ -127,7 +126,8 @@ class Table extends Component {
                 volBCH: result.volume.toFixed(2),
                 avgMonthBCH: result.averages.month.toFixed(2),
                 monthPercentBCH: result.changes.percent.month.toFixed(2),
-                lastBCH: localStorage.getItem('lastBCH')
+                lastBCH: localStorage.getItem('lastBCH'),
+                showBCH: false
               });
             },            
             (error) => {
@@ -156,7 +156,8 @@ class Table extends Component {
                 volZEC: result.volume.toFixed(2),
                 avgMonthZEC: result.averages.month.toFixed(2),
                 monthPercentZEC: result.changes.percent.month.toFixed(2),
-                lastZEC: localStorage.getItem('lastZEC')
+                lastZEC: localStorage.getItem('lastZEC'),
+                showZEC: false
               });
             },         
             (error) => {
@@ -174,8 +175,63 @@ class Table extends Component {
               }
             )
             )
-        }    
+          }    
+          
+          
+      showBTC = event => {
+        event.preventDefault();
+        this.setState(state => ({
+          showBTC: true,
+          showETH: false,
+          showXMR: false,
+          showBCH: false,
+          showZEC: false
+        }));
+        }
+      
+      showETH = event => {
+        event.preventDefault();
+        this.setState(state => ({
+          showBTC: false,
+          showETH: true,
+          showXMR: false,
+          showBCH: false,
+          showZEC: false
+        }));
+      }
 
+      showXMR = event => {
+        event.preventDefault();
+        this.setState({
+          showBTC: false,
+          showETH: false,
+          showXMR: true,
+          showBCH: false,
+          showZEC: false
+        })
+      }
+
+      showBCH = event => {
+        event.preventDefault();
+        this.setState({
+          showBTC: false,
+          showETH: false,
+          showXMR: false,
+          showBCH: true,
+          showZEC: false
+        })
+      }
+
+      showZEC = event =>  {
+        event.preventDefault();
+        this.setState({
+          showBTC: false,
+          showETH: false,
+          showXMR: false,
+          showBCH: false,
+          showZEC: true
+        })
+      }
 
       
       render() {
@@ -227,6 +283,11 @@ class Table extends Component {
             volZEC, 
             avgMonthZEC, 
             monthPercentZEC,
+            showBTC,
+            showETH,
+            showXMR,
+            showBCH,
+            showZEC
             
         } = this.state;
 
@@ -236,30 +297,19 @@ class Table extends Component {
           return <div>Loading...</div>;
         } else if (differenceBTC === 'null'){
           return <div id='reload'>Please refresh the page if this is your first time visiting.</div>
-        }      
-         else {
-          return (  
-        <>
-        <button>BTC</button>
-        <button>ETH</button>
-        <button>XMR</button>
-        <button>BCH</button>
-        <button>ZEC</button>
-        <div className='text-container'>                    
-          <h2 className='btc-price'> Bitcoin's Price has changed by ${differenceBTC} ({parseFloat(differencePercBTC).toFixed(4)}%)  </h2>
-          <h2 className='btc-last'> It was work ${this.state.lastBTC} the last time you checked</h2>
-          <h2 hidden className='eth-price'> Ethereum's Price has changed by ${differenceETH} ({parseFloat(differencePercETH).toFixed(4)}%)</h2>
-          <h2 hidden className='eth-last'> It was work ${this.state.lastETH} the last time you checked</h2>
-          <h2 hidden className='xmr-price'> Monero's Price has changed by ${differenceXMR} ({parseFloat(differencePercXMR).toFixed(4)}%)  </h2>
-          <h2 hidden className='xmr-last'> It was work ${this.state.lastXMR} the last time you checked</h2>
-          <h2 hidden className='bch-price'> Bitcoin Cash's Price has changed by ${differenceBCH} ({parseFloat(differencePercBCH).toFixed(4)}%)  </h2>
-          <h2 hidden className='bch-last'> It was work ${this.state.lastBCH} the last time you checked}</h2>
-          <h2 hidden className='zec-price'> Z-Cash's Price has changed by ${differenceZEC} ({parseFloat(differencePercZEC).toFixed(4)}%)  </h2>
-          <h2 hidden className='zec-last'> It was work ${this.state.lastZEC} the last time you checked</h2>
-          {/* <h2>It was worth ${this.state.lastPrice} the last time you checked at {lastTime} on {lastDate}   </h2>   */}
-        </div>
-
-        <div className='table-container'>         
+        } else if (this.state.showBTC == true){
+          return (
+          <>
+            <button onClick={this.showBTC}>BTC</button>
+            <button onClick={this.showETH}>ETH</button>
+            <button onClick={this.showXMR}>XMR</button>
+            <button onClick={this.showBCH}>BCH</button>
+            <button onClick={this.showZEC}>ZEC</button>
+            <div className='text-container'>
+            <h2 className='btc-price'> Bitcoin's Price has changed by ${differenceBTC} ({parseFloat(differencePercBTC).toFixed(4)}%)  </h2>
+            <h2 className='btc-last'> It was work ${this.state.lastBTC} the last time you checked</h2> 
+            </div>
+            <div className='table-container'>         
         <table className='table' >
         <thead>
         <tr>
@@ -320,25 +370,318 @@ class Table extends Component {
         </tr>
         </tbody>
         </table>
-        {/* <Bar
-          data={this.state.chartData}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'24 Hour Volume',
-              fontSize:25
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition
-            }
-          }}
-        /> */}
-        
         </div>
-        </>
-          );
+          </>
+          )
+        } 
+        else if (this.state.showETH == true) {
+          return(
+            <>
+            <button onClick={this.showBTC}>BTC</button>
+            <button onClick={this.showETH}>ETH</button>
+            <button onClick={this.showXMR}>XMR</button>
+            <button onClick={this.showBCH}>BCH</button>
+            <button onClick={this.showZEC}>ZEC</button>
+            <div className='text-container'>
+            <h2 className='eth-price'> Ethereum's Price has changed by ${differenceETH} ({parseFloat(differencePercETH).toFixed(4)}%)</h2>
+            <h2 className='eth-last'> It was work ${this.state.lastETH} the last time you checked</h2>
+            </div>
+            <div className='table-container'>         
+        <table className='table' >
+        <thead>
+        <tr>
+            <th className='chart-header' scope='col'>Coin/Token</th>
+            <th className='chart-header' scope='col'>Price</th>
+            <th className='chart-header' scope='col'>24h High</th>
+            <th className='chart-header' scope='col'>24h Low</th>
+            <th className='chart-header' scope='col'>24h Volume</th>
+            <th className='chart-header' scope='col'>Month Average</th>
+            <th className='chart-header' scope='col'>Month Difference</th>            
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th className='coin-text' scope='row'>BTC</th>
+            <td className='price-text' >${priceBTC}</td>
+            <td className='price-text' >${highBTC}</td>
+            <td className='price-text' >${lowBTC}</td>
+            <td className='price-text' >${volBTC}</td>
+            <td className='price-text' >${avgMonthBTC}</td>
+            <td className='price-text' >{monthPercentBTC}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ETH</th>
+            <td className='price-text' >${priceETH}</td>
+            <td className='price-text' >${highETH}</td>
+            <td className='price-text' >${lowETH}</td>
+            <td className='price-text' >${volETH}</td>
+            <td className='price-text' >${avgMonthETH}</td>
+            <td className='price-text' >{monthPercentETH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>XMR</th>
+            <td className='price-text' >${priceXMR}</td>
+            <td className='price-text' >${highXMR}</td>
+            <td className='price-text' >${lowXMR}</td>
+            <td className='price-text' >${volXMR}</td>
+            <td className='price-text' >${avgMonthXMR}</td>
+            <td className='price-text' >{monthPercentXMR}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>BCH</th>
+            <td className='price-text' >${priceBCH}</td>
+            <td className='price-text' >${highBCH}</td>
+            <td className='price-text' >${lowBCH}</td>
+            <td className='price-text' >${volBCH}</td>
+            <td className='price-text' >${avgMonthBCH}</td>
+            <td className='price-text' >{monthPercentBCH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ZEC</th>
+            <td className='price-text' >${priceZEC}</td>
+            <td className='price-text' >${highZEC}</td>
+            <td className='price-text' >${lowZEC}</td>
+            <td className='price-text' >${volZEC}</td>
+            <td className='price-text' >${avgMonthZEC}</td>
+            <td className='price-text' >{monthPercentZEC}%</td>           
+        </tr>
+        </tbody>
+        </table>
+        </div>
+          </>
+          )
+        }         
+        else if (this.state.showXMR == true) {
+          return(
+            <>
+            <button onClick={this.showBTC}>BTC</button>
+            <button onClick={this.showETH}>ETH</button>
+            <button onClick={this.showXMR}>XMR</button>
+            <button onClick={this.showBCH}>BCH</button>
+            <button onClick={this.showZEC}>ZEC</button>
+            <div className='text-container'>
+            <h2 className='xmr-price'> Monero's Price has changed by ${differenceXMR} ({parseFloat(differencePercXMR).toFixed(4)}%)  </h2>
+            <h2 className='xmr-last'> It was work ${this.state.lastXMR} the last time you checked</h2>
+            </div>
+            <div className='table-container'>         
+        <table className='table' >
+        <thead>
+        <tr>
+            <th className='chart-header' scope='col'>Coin/Token</th>
+            <th className='chart-header' scope='col'>Price</th>
+            <th className='chart-header' scope='col'>24h High</th>
+            <th className='chart-header' scope='col'>24h Low</th>
+            <th className='chart-header' scope='col'>24h Volume</th>
+            <th className='chart-header' scope='col'>Month Average</th>
+            <th className='chart-header' scope='col'>Month Difference</th>            
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th className='coin-text' scope='row'>BTC</th>
+            <td className='price-text' >${priceBTC}</td>
+            <td className='price-text' >${highBTC}</td>
+            <td className='price-text' >${lowBTC}</td>
+            <td className='price-text' >${volBTC}</td>
+            <td className='price-text' >${avgMonthBTC}</td>
+            <td className='price-text' >{monthPercentBTC}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ETH</th>
+            <td className='price-text' >${priceETH}</td>
+            <td className='price-text' >${highETH}</td>
+            <td className='price-text' >${lowETH}</td>
+            <td className='price-text' >${volETH}</td>
+            <td className='price-text' >${avgMonthETH}</td>
+            <td className='price-text' >{monthPercentETH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>XMR</th>
+            <td className='price-text' >${priceXMR}</td>
+            <td className='price-text' >${highXMR}</td>
+            <td className='price-text' >${lowXMR}</td>
+            <td className='price-text' >${volXMR}</td>
+            <td className='price-text' >${avgMonthXMR}</td>
+            <td className='price-text' >{monthPercentXMR}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>BCH</th>
+            <td className='price-text' >${priceBCH}</td>
+            <td className='price-text' >${highBCH}</td>
+            <td className='price-text' >${lowBCH}</td>
+            <td className='price-text' >${volBCH}</td>
+            <td className='price-text' >${avgMonthBCH}</td>
+            <td className='price-text' >{monthPercentBCH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ZEC</th>
+            <td className='price-text' >${priceZEC}</td>
+            <td className='price-text' >${highZEC}</td>
+            <td className='price-text' >${lowZEC}</td>
+            <td className='price-text' >${volZEC}</td>
+            <td className='price-text' >${avgMonthZEC}</td>
+            <td className='price-text' >{monthPercentZEC}%</td>           
+        </tr>
+        </tbody>
+        </table>
+        </div>
+          </>
+          )
         }
+        else if (this.state.showBCH == true) {
+          return(
+            <>
+            <button onClick={this.showBTC}>BTC</button>
+            <button onClick={this.showETH}>ETH</button>
+            <button onClick={this.showXMR}>XMR</button>
+            <button onClick={this.showBCH}>BCH</button>
+            <button onClick={this.showZEC}>ZEC</button>
+            <div className='text-container'>
+            <h2 className='bch-price'> Bitcoin Cash's Price has changed by ${differenceBCH} ({parseFloat(differencePercBCH).toFixed(4)}%)  </h2>
+            <h2 className='bch-last'> It was work ${this.state.lastBCH} the last time you checked}</h2>
+            </div>
+            <div className='table-container'>         
+        <table className='table' >
+        <thead>
+        <tr>
+            <th className='chart-header' scope='col'>Coin/Token</th>
+            <th className='chart-header' scope='col'>Price</th>
+            <th className='chart-header' scope='col'>24h High</th>
+            <th className='chart-header' scope='col'>24h Low</th>
+            <th className='chart-header' scope='col'>24h Volume</th>
+            <th className='chart-header' scope='col'>Month Average</th>
+            <th className='chart-header' scope='col'>Month Difference</th>            
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th className='coin-text' scope='row'>BTC</th>
+            <td className='price-text' >${priceBTC}</td>
+            <td className='price-text' >${highBTC}</td>
+            <td className='price-text' >${lowBTC}</td>
+            <td className='price-text' >${volBTC}</td>
+            <td className='price-text' >${avgMonthBTC}</td>
+            <td className='price-text' >{monthPercentBTC}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ETH</th>
+            <td className='price-text' >${priceETH}</td>
+            <td className='price-text' >${highETH}</td>
+            <td className='price-text' >${lowETH}</td>
+            <td className='price-text' >${volETH}</td>
+            <td className='price-text' >${avgMonthETH}</td>
+            <td className='price-text' >{monthPercentETH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>XMR</th>
+            <td className='price-text' >${priceXMR}</td>
+            <td className='price-text' >${highXMR}</td>
+            <td className='price-text' >${lowXMR}</td>
+            <td className='price-text' >${volXMR}</td>
+            <td className='price-text' >${avgMonthXMR}</td>
+            <td className='price-text' >{monthPercentXMR}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>BCH</th>
+            <td className='price-text' >${priceBCH}</td>
+            <td className='price-text' >${highBCH}</td>
+            <td className='price-text' >${lowBCH}</td>
+            <td className='price-text' >${volBCH}</td>
+            <td className='price-text' >${avgMonthBCH}</td>
+            <td className='price-text' >{monthPercentBCH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ZEC</th>
+            <td className='price-text' >${priceZEC}</td>
+            <td className='price-text' >${highZEC}</td>
+            <td className='price-text' >${lowZEC}</td>
+            <td className='price-text' >${volZEC}</td>
+            <td className='price-text' >${avgMonthZEC}</td>
+            <td className='price-text' >{monthPercentZEC}%</td>           
+        </tr>
+        </tbody>
+        </table>
+        </div>
+          </>
+          )
+        } 
+        else if (this.state.showZEC == true) {
+          return(
+            <>
+            <button onClick={this.showBTC}>BTC</button>
+            <button onClick={this.showETH}>ETH</button>
+            <button onClick={this.showXMR}>XMR</button>
+            <button onClick={this.showBCH}>BCH</button>
+            <button onClick={this.showZEC}>ZEC</button>
+            <div className='text-container'>
+            <h2 className='zec-price'> Z-Cash's Price has changed by ${differenceZEC} ({parseFloat(differencePercZEC).toFixed(4)}%)  </h2>
+            <h2 className='zec-last'> It was work ${this.state.lastZEC} the last time you checked</h2>
+            </div> 
+            <div className='table-container'>         
+        <table className='table' >
+        <thead>
+        <tr>
+            <th className='chart-header' scope='col'>Coin/Token</th>
+            <th className='chart-header' scope='col'>Price</th>
+            <th className='chart-header' scope='col'>24h High</th>
+            <th className='chart-header' scope='col'>24h Low</th>
+            <th className='chart-header' scope='col'>24h Volume</th>
+            <th className='chart-header' scope='col'>Month Average</th>
+            <th className='chart-header' scope='col'>Month Difference</th>            
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th className='coin-text' scope='row'>BTC</th>
+            <td className='price-text' >${priceBTC}</td>
+            <td className='price-text' >${highBTC}</td>
+            <td className='price-text' >${lowBTC}</td>
+            <td className='price-text' >${volBTC}</td>
+            <td className='price-text' >${avgMonthBTC}</td>
+            <td className='price-text' >{monthPercentBTC}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ETH</th>
+            <td className='price-text' >${priceETH}</td>
+            <td className='price-text' >${highETH}</td>
+            <td className='price-text' >${lowETH}</td>
+            <td className='price-text' >${volETH}</td>
+            <td className='price-text' >${avgMonthETH}</td>
+            <td className='price-text' >{monthPercentETH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>XMR</th>
+            <td className='price-text' >${priceXMR}</td>
+            <td className='price-text' >${highXMR}</td>
+            <td className='price-text' >${lowXMR}</td>
+            <td className='price-text' >${volXMR}</td>
+            <td className='price-text' >${avgMonthXMR}</td>
+            <td className='price-text' >{monthPercentXMR}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>BCH</th>
+            <td className='price-text' >${priceBCH}</td>
+            <td className='price-text' >${highBCH}</td>
+            <td className='price-text' >${lowBCH}</td>
+            <td className='price-text' >${volBCH}</td>
+            <td className='price-text' >${avgMonthBCH}</td>
+            <td className='price-text' >{monthPercentBCH}%</td>           
+        </tr>
+        <tr>
+            <th className='coin-text' scope='row'>ZEC</th>
+            <td className='price-text' >${priceZEC}</td>
+            <td className='price-text' >${highZEC}</td>
+            <td className='price-text' >${lowZEC}</td>
+            <td className='price-text' >${volZEC}</td>
+            <td className='price-text' >${avgMonthZEC}</td>
+            <td className='price-text' >{monthPercentZEC}%</td>           
+        </tr>
+        </tbody>
+        </table>
+        </div>           
+          </>
+          )
+        }            
       }
 };
 
