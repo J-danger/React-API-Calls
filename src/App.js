@@ -62,7 +62,7 @@ class App extends Component {
         <Clock /> 
         {/* <ApiCall />        */}
         <Table />
-        <Chart />
+        {/* <Chart /> */}
         
       </div>
     </div>

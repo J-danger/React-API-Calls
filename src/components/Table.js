@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import Chart from './Chart'
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import Chart from './Chart'
 // import { bar } from 'react-chartjs-2';
 
 class Table extends Component {
@@ -295,8 +296,8 @@ class Table extends Component {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading...</div>;
-        } else if (differenceBTC === 'null'){
-          return <div id='reload'>Please refresh the page if this is your first time visiting.</div>
+        } else if (this.state.lastBTC == null){
+          return <div className='reload'>Please refresh the page if this is your first time visiting.</div>
         } else if (this.state.showBTC == true){
           return (
           <>
@@ -373,11 +374,12 @@ class Table extends Component {
         </tbody>
         </table>
         </div>
+        <Chart />
           </>
           )
         } 
         else if (this.state.showETH == true) {
-          return(
+          return (
             <>
             <div className='buttons'>
               <button onClick={this.showBTC}>BTC</button>
@@ -452,11 +454,12 @@ class Table extends Component {
         </tbody>
         </table>
         </div>
+        <Chart />
           </>
-          )
+          );
         }         
         else if (this.state.showXMR == true) {
-          return(
+          return (
             <>
             <div className='buttons'>
               <button onClick={this.showBTC}>BTC</button>
@@ -531,11 +534,12 @@ class Table extends Component {
         </tbody>
         </table>
         </div>
+        <Chart />
           </>
-          )
+          );
         }
         else if (this.state.showBCH == true) {
-          return(
+          return (
             <>
             <div className='buttons'>
               <button onClick={this.showBTC}>BTC</button>
@@ -610,11 +614,12 @@ class Table extends Component {
         </tbody>
         </table>
         </div>
+        <Chart />
           </>
-          )
+          );
         } 
         else if (this.state.showZEC == true) {
-          return(
+          return (
             <>
             <div className='buttons'>
               <button onClick={this.showBTC}>BTC</button>
@@ -688,9 +693,10 @@ class Table extends Component {
         </tr>
         </tbody>
         </table>
-        </div>           
+        </div> 
+        <Chart />          
           </>
-          )
+          );
         }            
       }
 };
