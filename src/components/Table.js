@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 // import Chart from './Chart'
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import Chart from './Chart'
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { makeStyles } from '@material-ui/core/styles';
 // import { bar } from 'react-chartjs-2';
 
+
+
 class Table extends Component {
-    constructor(props) {
+      constructor(props) {
         super(props);        
         this.state = {
           error: null,
@@ -176,7 +181,9 @@ class Table extends Component {
               }
             )
             )
-          }    
+          }   
+          
+          
           
           
       showBTC = event => {
@@ -247,7 +254,7 @@ class Table extends Component {
         let differencePercBCH = (((this.state.priceBCH - this.state.lastBCH) / this.state.lastBCH) * 100)
         let differenceZEC = (this.state.priceZEC - this.state.lastZEC).toFixed(2)
         let differencePercZEC = (((this.state.priceZEC - this.state.lastZEC) / this.state.lastZEC) * 100)
-        console.log (differenceBTC, differenceBCH, differenceETH, differenceXMR, differenceZEC)
+        // console.log (differenceBTC, differenceBCH, differenceETH, differenceXMR, differenceZEC)
         
             
 
@@ -283,14 +290,12 @@ class Table extends Component {
             lowZEC, 
             volZEC, 
             avgMonthZEC, 
-            monthPercentZEC,
-            showBTC,
-            showETH,
-            showXMR,
-            showBCH,
-            showZEC
+            monthPercentZEC
+           
             
         } = this.state;
+
+       
 
         if (error) {
           return (
@@ -300,23 +305,26 @@ class Table extends Component {
           return (
           <div>Loading...</div>
           );
-        } else if (this.state.lastBTC == null){
+        } else if (this.state.lastBTC === null){
           return (
            <div className='reload'>Please refresh the page if this is your first time visiting.</div>
           );
-        } else if (this.state.showBTC == true){
+        } 
+        else if (this.state.showBTC === true) {
           return (
           <>
           <div className='buttons'>
-            <button onClick={this.showBTC}>BTC</button>
-            <button onClick={this.showETH}>ETH</button>
-            <button onClick={this.showXMR}>XMR</button>
-            <button onClick={this.showBCH}>BCH</button>
-            <button onClick={this.showZEC}>ZEC</button>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+            <Button onClick={this.showBTC}>BTC</Button>
+            <Button onClick={this.showETH}>ETH</Button>
+            <Button onClick={this.showXMR}>XMR</Button>
+            <Button onClick={this.showBCH}>BCH</Button>
+            <Button onClick={this.showZEC}>ZEC</Button>
+            </ButtonGroup>
           </div>
             <div className='text-container'>
             <h2 className='btc-price'> Bitcoin's Price has changed by ${differenceBTC} ({parseFloat(differencePercBTC).toFixed(4)}%)  </h2>
-            <h2 className='btc-last'> It was work ${this.state.lastBTC} the last time you checked</h2> 
+          <h2 className='btc-last'> It was worth ${this.state.lastBTC} the last time you checked at {this.state.lastTime} on {this.state.lastDate}</h2> 
             </div>
             <div className='table-container'>         
         <table className='table' >
@@ -384,19 +392,21 @@ class Table extends Component {
           </>
           );
         } 
-        else if (this.state.showETH == true) {
+        else if (this.state.showETH === true) {
           return (
             <>
             <div className='buttons'>
-              <button onClick={this.showBTC}>BTC</button>
-              <button onClick={this.showETH}>ETH</button>
-              <button onClick={this.showXMR}>XMR</button>
-              <button onClick={this.showBCH}>BCH</button>
-              <button onClick={this.showZEC}>ZEC</button>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+            <Button onClick={this.showBTC}>BTC</Button>
+            <Button onClick={this.showETH}>ETH</Button>
+            <Button onClick={this.showXMR}>XMR</Button>
+            <Button onClick={this.showBCH}>BCH</Button>
+            <Button onClick={this.showZEC}>ZEC</Button>
+            </ButtonGroup>
             </div>
             <div className='text-container'>
             <h2 className='eth-price'> Ethereum's Price has changed by ${differenceETH} ({parseFloat(differencePercETH).toFixed(4)}%)</h2>
-            <h2 className='eth-last'> It was work ${this.state.lastETH} the last time you checked</h2>
+            <h2 className='eth-last'> It was worth ${this.state.lastETH} the last time you checked at {this.state.lastTime} on {this.state.lastDate}</h2>
             </div>
             <div className='table-container'>         
         <table className='table' >
@@ -464,19 +474,21 @@ class Table extends Component {
           </>
           );
         }         
-        else if (this.state.showXMR == true) {
+        else if (this.state.showXMR === true) {
           return (
             <>
             <div className='buttons'>
-              <button onClick={this.showBTC}>BTC</button>
-              <button onClick={this.showETH}>ETH</button>
-              <button onClick={this.showXMR}>XMR</button>
-              <button onClick={this.showBCH}>BCH</button>
-              <button onClick={this.showZEC}>ZEC</button>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+              <Button onClick={this.showBTC}>BTC</Button>
+              <Button onClick={this.showETH}>ETH</Button>
+              <Button onClick={this.showXMR}>XMR</Button>
+              <Button onClick={this.showBCH}>BCH</Button>
+              <Button onClick={this.showZEC}>ZEC</Button>
+            </ButtonGroup>
             </div>
             <div className='text-container'>
             <h2 className='xmr-price'> Monero's Price has changed by ${differenceXMR} ({parseFloat(differencePercXMR).toFixed(4)}%)  </h2>
-            <h2 className='xmr-last'> It was work ${this.state.lastXMR} the last time you checked</h2>
+            <h2 className='xmr-last'> It was worth ${this.state.lastXMR} the last time you checked at {this.state.lastTime} on {this.state.lastDate}</h2>
             </div>
             <div className='table-container'>         
         <table className='table' >
@@ -544,19 +556,21 @@ class Table extends Component {
           </>
           );
         }
-        else if (this.state.showBCH == true) {
+        else if (this.state.showBCH === true) {
           return (
             <>
             <div className='buttons'>
-              <button onClick={this.showBTC}>BTC</button>
-              <button onClick={this.showETH}>ETH</button>
-              <button onClick={this.showXMR}>XMR</button>
-              <button onClick={this.showBCH}>BCH</button>
-              <button onClick={this.showZEC}>ZEC</button>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+              <Button onClick={this.showBTC}>BTC</Button>
+              <Button onClick={this.showETH}>ETH</Button>
+              <Button onClick={this.showXMR}>XMR</Button>
+              <Button onClick={this.showBCH}>BCH</Button>
+              <Button onClick={this.showZEC}>ZEC</Button>
+            </ButtonGroup>
             </div>
             <div className='text-container'>
             <h2 className='bch-price'> Bitcoin Cash's Price has changed by ${differenceBCH} ({parseFloat(differencePercBCH).toFixed(4)}%)  </h2>
-            <h2 className='bch-last'> It was work ${this.state.lastBCH} the last time you checked}</h2>
+            <h2 className='bch-last'> It was worth ${this.state.lastBCH} the last time you checked at {this.state.lastTime} on {this.state.lastDate}</h2>
             </div>
             <div className='table-container'>         
         <table className='table' >
@@ -624,19 +638,21 @@ class Table extends Component {
           </>
           );
         } 
-        else if (this.state.showZEC == true) {
+        else if (this.state.showZEC === true) {
           return (
             <>
             <div className='buttons'>
-              <button onClick={this.showBTC}>BTC</button>
-              <button onClick={this.showETH}>ETH</button>
-              <button onClick={this.showXMR}>XMR</button>
-              <button onClick={this.showBCH}>BCH</button>
-              <button onClick={this.showZEC}>ZEC</button>
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+              <Button onClick={this.showBTC}>BTC</Button>
+              <Button onClick={this.showETH}>ETH</Button>
+              <Button onClick={this.showXMR}>XMR</Button>
+              <Button onClick={this.showBCH}>BCH</Button>
+              <Button onClick={this.showZEC}>ZEC</Button>
+            </ButtonGroup>
             </div>
             <div className='text-container'>
             <h2 className='zec-price'> Z-Cash's Price has changed by ${differenceZEC} ({parseFloat(differencePercZEC).toFixed(4)}%)  </h2>
-            <h2 className='zec-last'> It was work ${this.state.lastZEC} the last time you checked</h2>
+            <h2 className='zec-last'> It was worth ${this.state.lastZEC} the last time you checked at {this.state.lastTime} on {this.state.lastDate}</h2>
             </div> 
             <div className='table-container'>         
         <table className='table' >

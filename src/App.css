@@ -1,5 +1,5 @@
 Body {
-  background: #23374d;
+  background: rgb(33, 33, 33);
   background-size: cover;
   color: rgb(0, 0, 0);  
   font-family: 'Nanum Gothic', sans-serif;
@@ -30,6 +30,7 @@ li {
 
 
 
+
 .table-container {
   
   margin-top: 2.5%;
@@ -39,8 +40,19 @@ li {
 }
 
 tbody > tr {
-  background: whitesmoke; 
+  background: rgb(39, 44, 52); 
+  color: white
   
+}
+
+td.price-text {
+  color: white;
+}
+
+th.chart-header {
+  background: rgb(63, 81, 181);
+  color: white;
+  padding: 10px;
 }
 
 
@@ -50,11 +62,6 @@ tbody > tr {
   
 }
 
-.chart-header {
-  background: #1089ff;
-  color: white;
-  padding: 10px;
-}
 
 .price-text {
   color: black;

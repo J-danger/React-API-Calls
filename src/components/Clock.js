@@ -39,6 +39,9 @@ class Clock extends Component {
                 {/* print the string prettily */}
                 {time.toLocaleTimeString()}
             </h2>
+            <h2>
+            
+            </h2>
         </div>);
     }
 }

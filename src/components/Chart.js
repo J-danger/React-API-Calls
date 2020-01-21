@@ -56,7 +56,7 @@ class Chart extends Component{
   render(){
     return (
       <div className='chart'>
-        <Doughnut
+        <Bar
           data={this.state.chartData}
           width={100}
           height={20}
@@ -69,7 +69,7 @@ class Chart extends Component{
               color: 'white'
             },
             legend:{
-              display:this.props.displayLegend,
+              display: false,
               position:'bottom'
             }
           }}
