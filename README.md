@@ -4,4 +4,5 @@ This app uses localstorage and React states in order to display the price of Bit
 
 Deployed: https://btclast.herokuapp.com/
 
-Future development: Allow the user to locally store price information for all 5 pre-tracked currencies. In addition to allowing the user to select their own cryptocurrencies to track. 
+Future development: Allow the user to locally store price information for all 5 pre-tracked currencies. In addition to allowing the user to select their own cryptocurrencies to track
+
